@@ -10,6 +10,7 @@ import HackathonCountdown from './components/HackathonCountdown';
 import PrizePoolSection from './components/PrizePoolSection';
 import CodeOClockLoader from './components/CodeOClockLoader';
 import "./App.css";
+import Sponsors from './components/sponsors';
 
 // Main App Content Component - Contains all the homepage sections
 const MainAppContent = ({ onNavigateToDevelopers }) => {
@@ -42,6 +43,11 @@ const MainAppContent = ({ onNavigateToDevelopers }) => {
 
       <section id="time">
         <TimelineSection />
+      </section>
+
+
+      <section id="time">
+        <Sponsors />
       </section>
       
 

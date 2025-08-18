@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Terminal, Code, Zap } from 'lucide-react';
-
-
-
+import { Clock, Terminal, Code, Zap, Cpu, Database, Globe } from 'lucide-react';
 
 const HackathonCountdown = () => {
   const [targetDate] = useState(() => {
@@ -13,10 +10,9 @@ const HackathonCountdown = () => {
   });
 
   const [absoluteDuration] = useState(() => {
-  const now = new Date().getTime();
-  return Math.floor((targetDate.getTime() - now) / 1000); // fixed total seconds from now to target
-});
-
+    const now = new Date().getTime();
+    return Math.floor((targetDate.getTime() - now) / 1000);
+  });
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -27,368 +23,327 @@ const HackathonCountdown = () => {
 
   const [isActive, setIsActive] = useState(true);
   const [totalSeconds, setTotalSeconds] = useState(0);
-  const [totalDuration, setTotalDuration] = useState(0); // Total duration from now to target
- const [showTime, setShowTime] = useState(true);
+  const [showTime, setShowTime] = useState(true);
 
-  // Blink effect
+  // Smooth fade effect for terminal
   useEffect(() => {
-    const blinkTimer = setInterval(() => {
+    const fadeTimer = setInterval(() => {
       setShowTime(prev => !prev);
-    }, 800); // change every 0.8s
-    return () => clearInterval(blinkTimer);
+    }, 3000); // Slower, less disturbing
+    return () => clearInterval(fadeTimer);
   }, []);
 
-useEffect(() => {
-  const calculateTimeLeft = () => {
-    const now = new Date().getTime();
-    const difference = targetDate.getTime() - now;
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = new Date().getTime();
+      const difference = targetDate.getTime() - now;
 
-    if (difference > 0) {
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      setTimeLeft({ days, hours, minutes, seconds });
-      setTotalSeconds(Math.floor(difference / 1000));
-      setIsActive(true);
-    } else {
-      setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      setTotalSeconds(0);
-      setIsActive(false);
-    }
+        setTimeLeft({ days, hours, minutes, seconds });
+        setTotalSeconds(Math.floor(difference / 1000));
+        setIsActive(true);
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setTotalSeconds(0);
+        setIsActive(false);
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  const formatDateTime = (date) => {
+    return date.toLocaleString('en-GB', {
+      hour12: false,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
   };
 
-  calculateTimeLeft();
-  const timer = setInterval(calculateTimeLeft, 1000);
-  return () => clearInterval(timer);
-}, [targetDate]);
-
-
- const formatDateTime = (date) => {
-  return date.toLocaleString('en-GB', {  // en-GB gives DD/MM/YYYY
-    hour12: false,                       // 24-hour clock
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  });
-};
-
-
   return (
-    <div className="hackathon-countdown min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Matrix-style background */}
-      <div className="hackathon-countdown-fixed inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500"></div>
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-green-400 font-mono text-xs animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`
-            }}
-          >
-            {Math.random() > 0.5 ? '1' : '0'}
-          </div>
-        ))}
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center mb-6 px-6 py-3 border border-pink-500 rounded-full bg-black bg-opacity-50 backdrop-blur-sm">
-            <Terminal className="w-5 h-5 text-pink-400 mr-3" />
-            <span className="font-mono text-pink-400 text-sm tracking-wide">SYSTEM_STATUS: ACTIVE</span>
-          </div>
-
-          <h1 className="text-5xl sm:text-7xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
-            &lt;/COUNTDOWN&gt;
-          </h1>
-
-          <div className="font-mono text-gray-400 text-sm mb-2">
-  TARGET_DEADLINE: {formatDateTime(targetDate)}
-</div>
-<div className="font-mono text-gray-500 text-xs">
-  CURRENT_TIME: {formatDateTime(new Date())}
-</div>
-
-        </div>
-
-        {/* Countdown Display */}
-        {isActive ? (
-          <div className="mb-12">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 justify-center max-w-4xl mx-auto">
-              <TechnicalClockUnit 
-                value={timeLeft.days} 
-                label="DAYS" 
-                maxValue={30}
-                color="from-blue-500 to-cyan-500"
-                icon={Clock}
-              />
-              <TechnicalClockUnit 
-                value={timeLeft.hours} 
-                label="HOURS" 
-                maxValue={24}
-                color="from-pink-500 to-rose-500"
-                icon={Zap}
-              />
-              <TechnicalClockUnit 
-                value={timeLeft.minutes} 
-                label="MINUTES" 
-                maxValue={60}
-                color="from-purple-500 to-violet-500"
-                icon={Code}
-              />
-              <TechnicalClockUnit 
-                value={timeLeft.seconds} 
-                label="SECONDS" 
-                maxValue={60}
-                color="from-orange-500 to-red-500"
-                icon={Terminal}
-              />
-            </div>
-
-            {/* Technical Stats */}
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
-  <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center">
-    <div className="text-xs font-mono text-gray-400 mb-1">TOTAL_SECONDS</div>
-    <div className="text-xl font-mono text-pink-400">{totalSeconds.toLocaleString()}</div>
-  </div>
-  <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center">
-    <div className="text-xs font-mono text-gray-400 mb-1">PROGRESS_BAR</div>
-    <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
-      <div 
-        className="bg-gradient-to-r from-pink-500 to-purple-500 h-2 rounded-full transition-all duration-1000"
-        style={{ width: `${Math.max(0, ((absoluteDuration - totalSeconds) / absoluteDuration) * 100)}%` }}
-      ></div>
-    </div>
-    <div className="text-xs font-mono text-purple-400">
-      {Math.max(0, ((absoluteDuration - totalSeconds) / absoluteDuration) * 100).toFixed(1)}%
-    </div>
-  </div>
-  <div className="bg-gray-900 border border-gray-800 rounded-lg p-4 text-center">
-    <div className="text-xs font-mono text-gray-400 mb-1">STATUS_CODE</div>
-    <div className="text-xl font-mono text-green-400">200 OK</div>
-  </div>
-</div>
-
-          </div>
-        ) : (
-          <div className="text-center mb-12">
-            <div className="text-8xl mb-6">⚡</div>
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
-              EXECUTION_COMPLETE
-            </h2>
-            <div className="font-mono text-gray-400 text-lg mb-4">
-              $ hackathon --status=finished --submissions=open
-            </div>
-            <div className="inline-block px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg font-mono font-bold">
-              DEPLOY_NOW.exe
-            </div>
-          </div>
-        )}
-
-        {/* Terminal */}
-        <div className="bg-gray-900 border border-gray-700 rounded-lg p-6 font-mono text-sm max-w-2xl mx-auto">
-          <div className="flex items-center mb-4">
-            <div className="flex space-x-2 mr-4">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            </div>
-            <span className="text-gray-400">hackathon-terminal.sh</span>
-          </div>
-          
-          <div className="space-y-2">
-            <div className="text-green-400">
-              <span className="text-pink-500">user@hackathon:~$</span> ./countdown.sh --target={targetDate.toISOString().split('T')[0]}
-            </div>
-            <div className="text-gray-300">
-              → Initializing countdown protocol...
-            </div>
-          {showTime && (
-  <div className="text-gray-300">
-    → Time remaining: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-  </div>
-)}
-
-
-            <div className="text-gray-300">
-              → Status: {isActive ? 
-                <span className="text-green-400 animate-pulse">ACTIVE_DEVELOPMENT</span> : 
-                <span className="text-red-400">SUBMISSION_DEADLINE_REACHED</span>
-              }
-            </div>
-            {isActive && (
-              <div className="text-pink-400 animate-pulse">
-                <span className="text-pink-500">system@hackathon:~$</span> {totalSeconds > 3600 ? 'keep --coding' : 'final --sprint'}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Floating code elements */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-10">
-          {['{', '}', '<', '>', '/>', '()', '[]', '&&', '||', '=>'].map((symbol, i) => (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-900/20 via-purple-900/20 to-black opacity-80"></div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute text-pink-100 font-mono text-2xl animate-float"
+              className="absolute w-1 h-1 bg-pink-500 rounded-full animate-pulse opacity-40"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 2}s`
-                
+                animationDuration: `${2 + Math.random() * 2}s`
               }}
-            >
-              {symbol}
-            </div>
+            />
           ))}
         </div>
+
+        {/* Grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `linear-gradient(rgba(236, 72, 153, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(236, 72, 153, 0.3) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}
+        />
       </div>
 
-      {/* Scoped Styles */}
-      <style jsx>{`
-        .hackathon-countdown {
-          --pointer-x: 50%;
-          --pointer-y: 50%;
-          --pointer-from-center: 0;
-          --pointer-from-top: 0.5;
-          --pointer-from-left: 0.5;
-          --card-opacity: 0;
-          --rotate-x: 0deg;
-          --rotate-y: 0deg;
-          --background-x: 50%;
-          --background-y: 50%;
-        }
+      <div className="relative z-10 container mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center mb-8 px-8 py-4 border-2 border-pink-500/50 rounded-2xl bg-black/50 backdrop-blur-lg shadow-2xl shadow-pink-500/25">
+            <Terminal className="w-6 h-6 text-pink-400 mr-4" />
+            <span className="font-mono text-pink-400 text-lg tracking-wide">HACKATHON.STATUS</span>
+            <div className="ml-4 w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+          </div>
 
-        .hackathon-countdown @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
+          <h1 className="text-2xl sm:text-4xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-pink-400 via-purple-400 to-pink-600 bg-clip-text text-transparent drop-shadow-2xl">
+            COUNTDOWN
+          </h1>
 
-        .hackathon-countdown @keyframes pulse-glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.3); }
-          50% { box-shadow: 0 0 30px rgba(236, 72, 153, 0.6); }
-        }
+          <div className="space-y-2 font-mono">
+            <div className="text-gray-300 text-lg">
+              <span className="text-pink-400">TARGET:</span> {formatDateTime(targetDate)}
+            </div>
+            <div className="text-gray-500 text-sm">
+              <span className="text-purple-400">CURRENT:</span> {formatDateTime(new Date())}
+            </div>
+          </div>
+        </div>
 
-        .hackathon-countdown .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
+        {/* Countdown Display */}
+        {isActive ? (
+          <div className="mb-16">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 max-w-6xl mx-auto">
+              <EnhancedTimeUnit 
+                value={timeLeft.days} 
+                label="DAYS" 
+                maxValue={30}
+                color="from-pink-500 to-purple-500"
+                icon={Clock}
+                glowColor="pink-500"
+              />
+              <EnhancedTimeUnit 
+                value={timeLeft.hours} 
+                label="HOURS" 
+                maxValue={24}
+                color="from-purple-500 to-pink-500"
+                icon={Zap}
+                glowColor="purple-500"
+              />
+              <EnhancedTimeUnit 
+                value={timeLeft.minutes} 
+                label="MINUTES" 
+                maxValue={60}
+                color="from-pink-600 to-purple-600"
+                icon={Code}
+                glowColor="pink-600"
+              />
+              <EnhancedTimeUnit 
+                value={timeLeft.seconds} 
+                label="SECONDS" 
+                maxValue={60}
+                color="from-purple-600 to-pink-600"
+                icon={Cpu}
+                glowColor="purple-600"
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="text-center mb-16">
+            <div className="text-8xl mb-8 animate-bounce">🚀</div>
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+              LAUNCH TIME!
+            </h2>
+            <div className="font-mono text-gray-300 text-xl mb-6">
+              $ hackathon --deploy --production
+            </div>
+            <button className="px-12 py-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl font-bold text-xl shadow-2xl shadow-pink-500/50 hover:shadow-pink-500/75 transition-all duration-300 hover:scale-105">
+              SUBMIT PROJECT
+            </button>
+          </div>
+        )}
 
-        .hackathon-countdown .glow-effect {
-          animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        .hackathon-countdown .neon-border {
-          border: 1px solid;
-          border-image: linear-gradient(45deg, #ec4899, #8b5cf6) 1;
-        }
-
-        .hackathon-countdown ::-webkit-scrollbar {
-          width: 8px;
-        }
-        .hackathon-countdown ::-webkit-scrollbar-track {
-          background: #1a1a1a;
-        }
-        .hackathon-countdown ::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, #ec4899, #8b5cf6);
-          border-radius: 4px;
-        }
-        .hackathon-countdown ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, #be185d, #7c3aed);
-        }
-      `}</style>
+        {/* Enhanced Terminal */}
+        <div className="bg-gray-900/80 backdrop-blur-lg border-2 border-gray-700/50 rounded-2xl p-8 font-mono text-sm max-w-4xl mx-auto shadow-2xl">
+          <div className="flex items-center mb-6">
+            <div className="flex space-x-3 mr-6">
+              <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg shadow-red-500/50"></div>
+              <div className="w-4 h-4 bg-yellow-500 rounded-full shadow-lg shadow-yellow-500/50"></div>
+              <div className="w-4 h-4 bg-green-500 rounded-full shadow-lg shadow-green-500/50"></div>
+            </div>
+            <span className="text-gray-400 text-lg">hackathon-system.terminal</span>
+          </div>
+          
+          <div className="space-y-3 text-base">
+            <div className="text-green-400">
+              <span className="text-pink-500">dev@hackathon:~$</span> ./countdown.exe --target={targetDate.toISOString().split('T')[0]}
+            </div>
+            <div className="text-gray-300 pl-4">
+              → Initializing countdown protocol...
+              <span className="text-green-400 ml-2">✓</span>
+            </div>
+            <div className={`text-gray-300 pl-4 transition-opacity duration-1000 ${showTime ? 'opacity-100' : 'opacity-50'}`}>
+              → Time remaining: <span className="text-pink-400 font-bold">{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</span>
+            </div>
+            <div className="text-gray-300 pl-4">
+              → Status: {isActive ? 
+                <span className="text-green-400 font-bold">DEVELOPMENT_ACTIVE</span> : 
+                <span className="text-red-400 font-bold">SUBMISSION_OPEN</span>
+              }
+            </div>
+            {isActive && (
+              <div className="text-pink-400 pl-4">
+                <span className="text-pink-500">system@hackathon:~$</span> 
+                <span className="ml-2 animate-pulse">
+                  {totalSeconds > 3600 ? 'code --mode=creative' : 'deploy --final-sprint'}
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-// Scoped TechnicalClockUnit
-const TechnicalClockUnit = ({ value, label, maxValue, color, icon: Icon }) => {
+// Enhanced Time Unit Component with properly aligned circles
+const EnhancedTimeUnit = ({ value, label, maxValue, color, icon: Icon, glowColor }) => {
   const percentage = (value / maxValue) * 100;
-  const circumference = 2 * Math.PI * 45;
-  const strokeDasharray = circumference;
+  const radius = 50; // Same radius for both circles
+  const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="hackathon-countdown relative group">
-      <div className="relative w-28 h-28 sm:w-32 sm:h-32">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-800 to-black border border-gray-600 glow-effect">
-          <div className={`absolute inset-0 rounded-full opacity-20 bg-gradient-to-br ${color} blur-sm`}></div>
-        </div>
+    <div className="relative group">
+      <div className="relative w-36 h-36 lg:w-40 lg:h-40">
+        {/* Outer glow ring */}
+        <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${color} opacity-20 blur-md animate-pulse`}></div>
+        
+        {/* Main container */}
+        <div className="absolute inset-1 rounded-full bg-black/60 backdrop-blur-sm border-2 border-gray-700/50 shadow-2xl">
+          
+          {/* SVG Progress Ring */}
+          <svg className="absolute inset-0 w-full h-full transform -rotate-90">
+            <defs>
+              <linearGradient id={`gradient-${label}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#ec4899" />
+                <stop offset="50%" stopColor="#8b5cf6" />
+                <stop offset="100%" stopColor="#ec4899" />
+              </linearGradient>
+            </defs>
 
-        <svg className="absolute inset-2 w-24 h-24 sm:w-28 sm:h-28 transform -rotate-90">
-          <defs>
-            <pattern id={`grid-${label}`} width="4" height="4" patternUnits="userSpaceOnUse">
-              <path d="M 4 0 L 0 0 0 4" fill="none" stroke="rgba(75, 85, 99, 0.1)" strokeWidth="0.5"/>
-            </pattern>
-            <linearGradient id={`gradient-${label}`} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ec4899" />
-              <stop offset="100%" stopColor="#8b5cf6" />
-            </linearGradient>
-          </defs>
+            {/* Background circle (static) */}
+            <circle
+              cx="50%"
+              cy="50%"
+              r={radius}
+              stroke="rgba(75, 85, 99, 0.3)"
+              strokeWidth="4"
+              fill="transparent"
+            />
 
-          <circle
-            cx="50%"
-            cy="50%"
-            r="45"
-            stroke="rgba(75, 85, 99, 0.2)"
-            strokeWidth="2"
-            fill="url(#grid-${label})"
-          />
+            {/* Progress circle (rotating based on time) */}
+            <circle
+              cx="50%"
+              cy="50%"
+              r={radius}
+              stroke={`url(#gradient-${label})`}
+              strokeWidth="4"
+              fill="transparent"
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              className="transition-all duration-1000 ease-out"
+              strokeLinecap="round"
+              style={{
+                filter: `drop-shadow(0 0 8px rgba(236, 72, 153, 0.6))`
+              }}
+            />
+          </svg>
 
-          <circle
-            cx="50%"
-            cy="50%"
-            r="45"
-            stroke="url(#gradient-${label})"
-            strokeWidth="3"
-            fill="transparent"
-            strokeDasharray={strokeDasharray}
-            strokeDashoffset={strokeDashoffset}
-            className="transition-all duration-1000 ease-out drop-shadow-lg"
-            strokeLinecap="round"
-          />
-
-          <circle
-            cx="50%"
-            cy="50%"
-            r="35"
-            stroke="rgba(75, 85, 99, 0.1)"
-            strokeWidth="1"
-            fill="transparent"
-            strokeDasharray="2,2"
-          />
-        </svg>
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 mb-1 opacity-60" />
-          <div className="text-2xl sm:text-3xl font-mono font-bold text-white tracking-wider">
-            {value.toString().padStart(2, '0')}
+          {/* Center content */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <Icon className={`w-6 h-6 text-${glowColor} mb-2 opacity-80`} />
+            <div className="text-3xl lg:text-4xl font-mono font-black text-white tracking-wider drop-shadow-lg">
+              {value.toString().padStart(2, '0')}
+            </div>
+            <div className="text-xs font-mono text-gray-500 mt-1">
+              {percentage.toFixed(0)}%
+            </div>
           </div>
-          <div className="text-xs font-mono text-gray-600">
-            0x{value.toString(16).padStart(2, '0').toUpperCase()}
-          </div>
-        </div>
 
-        <div className="absolute inset-0 rounded-full overflow-hidden">
-          <div className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-pink-500 to-transparent opacity-30 animate-ping"
-               style={{ top: '50%', animationDuration: '3s' }}></div>
+          {/* Rotating accent */}
+          <div className="absolute inset-0 rounded-full">
+            <div className="absolute w-2 h-2 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50"
+                 style={{
+                   top: '10px',
+                   left: '50%',
+                   transform: 'translateX(-50%)',
+                   animation: 'spin 10s linear infinite'
+                 }}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="text-center mt-4">
-        <div className="text-xs font-mono text-gray-400 uppercase tracking-widest mb-1">
+      {/* Label */}
+      <div className="text-center mt-6">
+        <div className="text-sm font-mono text-gray-300 uppercase tracking-widest font-bold">
           {label}
         </div>
-        <div className="text-xs text-gray-600 font-mono">
-          [{percentage.toFixed(1)}%] | 0b{value.toString(2).padStart(8, '0')}
+        <div className="text-xs text-gray-600 font-mono mt-1">
+          0x{value.toString(16).padStart(2, '0').toUpperCase()}
         </div>
+      </div>
+    </div>
+  );
+};
+
+// Compact Stat Card Component
+const CompactStatCard = ({ icon: Icon, title, value, color, progress }) => {
+  const colorClasses = {
+    pink: 'from-pink-600 to-pink-400',
+    purple: 'from-purple-600 to-purple-400',
+    green: 'from-green-600 to-green-400'
+  };
+
+  return (
+    <div className="bg-gray-900/60 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300">
+      <div className="flex items-center justify-between mb-3">
+        <Icon className={`w-5 h-5 text-${color}-400`} />
+        <div className="text-xs font-mono text-gray-400 uppercase tracking-wide">
+          {title}
+        </div>
+      </div>
+      
+      {progress !== undefined && (
+        <div className="mb-3">
+          <div className="w-full bg-gray-700 rounded-full h-1.5">
+            <div 
+              className={`bg-gradient-to-r ${colorClasses[color]} h-1.5 rounded-full transition-all duration-1000 ease-out`}
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+      )}
+      
+      <div className={`text-lg font-mono font-bold text-${color}-400`}>
+        {value}
       </div>
     </div>
   );
