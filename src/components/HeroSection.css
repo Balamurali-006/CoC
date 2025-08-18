@@ -1,0 +1,13 @@
+/* App.css or relevant CSS file */
+.spline-wrapper iframe {
+  pointer-events: auto;
+}
+
+.spline-wrapper iframe::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide watermark (works for now, but might break if Spline changes DOM) */
+.spline-wrapper iframe {
+  mask-image: none !important;
+}

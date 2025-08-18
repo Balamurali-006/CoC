@@ -1,0 +1,156 @@
+TimelineCard.css
+
+.parent {
+  width: 100%;
+  perspective: 1000px;
+}
+
+.card {
+  position: relative;
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+  transform-style: preserve-3d;
+  overflow: hidden; /* so the ripple stays inside */
+}
+
+.glass {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(0deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.15) 100%);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transform: translateZ(25px);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  transform: translateZ(26px);
+}
+
+/* .parent:hover .card {
+  transform: rotate3d(1, 1, 0, 20deg);
+  box-shadow: rgba(236, 72, 153, 0.3) 0px 20px 40px -10px;
+} */
+
+.corner-ripple {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: #ec4899; /* Base circle color */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: visible;
+}
+
+.corner-ripple::before,
+.corner-ripple::after,
+.corner-ripple span {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(236, 72, 153, 0.6);
+  transform: scale(1);
+  opacity: 0;
+}
+
+.corner-ripple span {
+  animation: rippleWave 2s infinite ease-out;
+}
+
+.corner-ripple::before {
+  animation: rippleWave 2s infinite ease-out;
+  animation-delay: 0.4s;
+}
+
+.corner-ripple::after {
+  animation: rippleWave 2s infinite ease-out;
+  animation-delay: 0.8s;
+}
+
+@keyframes rippleWave {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(2.5);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Position variants */
+.left-corner {
+  top: 10px;
+  left: 10px;
+}
+
+.right-corner {
+  top: 10px;
+  right: 10px;
+}
+
+
+/* Card border glow animation on hover */
+.parent:hover .card {
+  transform: rotate3d(1, 1, 0, 20deg);
+  box-shadow: rgba(236, 72, 153, 0.3) 0px 20px 40px -10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  animation: borderGlow 1.5s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% {
+    box-shadow: 0 0 5px #ec4899, 0 0 10px #d946ef, 0 0 15px #a855f7;
+  }
+  50% {
+    box-shadow: 0 0 15px #ec4899, 0 0 25px #d946ef, 0 0 35px #a855f7;
+  }
+  100% {
+    box-shadow: 0 0 5px #ec4899, 0 0 10px #d946ef, 0 0 15px #a855f7;
+  }
+}
+
+/* Text pop-out effect on hover */
+.parent:hover .content {
+  transform: translateZ(40px) scale(1.05);
+  transition: transform 0.4s ease, text-shadow 0.4s ease;
+}
+
+.parent:hover .content h3,
+.parent:hover .content .text-lg {
+  text-shadow: 0px 3px 10px rgba(236, 72, 153, 0.7);
+}
+
+.parent:hover .content p {
+  text-shadow: 0px 2px 8px rgba(168, 85, 247, 0.5);
+}
+
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 800px;
+}
+
+.timeline-icon {
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 0 5px #ec4899) drop-shadow(0 0 10px #d946ef) drop-shadow(0 0 15px #a855f7);
+}
+
+.parent:hover .timeline-icon {
+  transform: translateZ(30px) scale(1.3) rotateY(15deg);
+  filter: drop-shadow(0 0 10px #ec4899) drop-shadow(0 0 20px #d946ef) drop-shadow(0 0 30px #a855f7);
+}
