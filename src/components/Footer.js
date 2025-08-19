@@ -24,13 +24,13 @@ const Footer = ({ onNavigateToDevelopers }) => {
             </div>
           </div>
           
-          <div>
+          {/* <div>
             <h4 className="text-lg font-semibold text-white mb-4">Connect</h4>
             <div className="space-y-2">
               <a href="#" className="block text-gray-400 hover:text-pink-500 transition-colors duration-300">Discord</a>
               <a href="#" className="block text-gray-400 hover:text-pink-500 transition-colors duration-300">Twitter</a>
             </div>
-          </div>
+          </div> */}
         </div>
         
         {/* Bottom section with "Powered by" link */}
@@ -41,8 +41,8 @@ const Footer = ({ onNavigateToDevelopers }) => {
             </p>
             
             <div className="mt-4 md:mt-0 flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors text-sm">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors text-sm">Terms of Service</a>
+              {/* <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors text-sm">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors text-sm">Terms of Service</a> */}
               
               {/* THIS IS THE IMPORTANT PART - "Powered by" button */}
               <button 

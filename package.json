@@ -49,5 +49,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "build": "GENERATE_SOURCEMAP=false CI=false react-scripts build"
 }
