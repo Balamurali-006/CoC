@@ -73,7 +73,7 @@ const HeroSection = () => {
                 <div className="text-cyan-400 text-sm font-medium mb-1">EVENT DATE</div>
                 <div className="text-white font-bold text-lg flex items-center gap-2">
                   <span className="text-2xl">📅</span>
-                  27 Sept 2025
+                  26 Sept 2025
                 </div>
               </div>
             </div>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import TargetCursor from "./TargetCursor";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -20,10 +22,10 @@ const Header = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
-    { name: 'Timeline', href: '#timeline' },
     { name: 'Prizes', href: '#prize' },
+    { name: 'Timeline', href: '#timeline' },
     { name: 'Sponsors', href: '#sponsors' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: '#team' }
   ];
 
   return (
@@ -82,6 +84,18 @@ const Header = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
+            <button
+onClick={() => navigate("/developers")}
+  className="relative group flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-white text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105"
+>
+  {/* Icon */}
+  <span className="relative z-10 group-hover:translate-x-1 transition-transform duration-300">
+    👨🏻‍💻
+  </span>
+  {/* Background glow */}
+  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-600/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -m-1"></div>
+</button>
+
 
             {/* Mobile Menu Button */}
             <button

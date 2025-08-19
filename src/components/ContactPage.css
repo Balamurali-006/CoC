@@ -1,0 +1,183 @@
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .contact-grid {
+    gap: 30px;
+  }
+  
+  .contact-grid .profile-card {
+    transition: transform 0.2s ease;
+  }
+  
+  .contact-grid .profile-card:active {
+    transform: scale(0.95);
+  }
+}/* ContactPage.css - Enhanced Mobile Version */
+.contact-page {
+  padding: 40px 20px 40px;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #fff;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #b30e97; /* accent color */
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* Base grid */
+.contact-grid {
+  display: grid;
+  gap: 50px; /* balanced spacing between cards */
+  justify-content: center; /* keeps cards centered */
+  margin-bottom: 40px;
+}
+
+/* Custom column layouts */
+.two-cols {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.three-cols {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 750px;
+  margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+.four-cols {
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1500px;   /* ensures proper centering */
+  margin: 0 auto;
+}
+
+/* Card sizing */
+.contact-grid .profile-card {
+  width: 160px;       /* smaller width */
+  height: 200px;      /* compact height */
+  margin: 0 auto;
+}
+
+.contact-grid .profile-card:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .contact-page {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .section-heading {
+    font-size: 2.2rem;
+  }
+  
+  .contact-grid {
+    gap: 1.5rem;
+  }
+  
+  .contact-grid.four-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 1rem 0.5rem;
+  }
+  
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  
+  .section-heading {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-heading::after {
+    width: 60px;
+    height: 3px;
+  }
+  
+  .contact-grid {
+    gap: 1.25rem;
+  }
+  
+  /* All grids become single column on mobile */
+  .contact-grid.two-cols,
+  .contact-grid.three-cols,
+  .contact-grid.four-cols {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .contact-page {
+    padding: 0.75rem 0.25rem;
+  }
+  
+  .section-heading {
+    font-size: 1.6rem;
+  }
+  
+  .contact-grid {
+    gap: 1rem;
+  }
+  
+  .contact-grid.two-cols,
+  .contact-grid.three-cols,
+  .contact-grid.four-cols {
+    max-width: 300px;
+  }
+}
+
+/* Accessibility and Touch Improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device optimizations */
+  .contact-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* High DPI/Retina Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .section-heading::after {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .contact-grid.two-cols,
+  .contact-grid.three-cols,
+  .contact-grid.four-cols {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+  }
+  
+  .contact-page {
+    padding: 1rem;
+  }
+}
