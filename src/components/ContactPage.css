@@ -1,30 +1,12 @@
-/* Touch Device Optimizations */
-@media (hover: none) and (pointer: coarse) {
-  .contact-grid {
-    gap: 30px;
-  }
-  
-  .contact-grid .profile-card {
-    transition: transform 0.2s ease;
-  }
-  
-  .contact-grid .profile-card:active {
-    transform: scale(0.95);
-  }
-}/* ContactPage.css - Enhanced Mobile Version */
+/* Contact Page Styles */
 .contact-page {
-  padding: 40px 20px 40px;
   text-align: center;
-}
-
-.section {
-  margin-bottom: 60px;
+  min-height: 100vh;
 }
 
 .section-heading {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 40px;
   color: #fff;
   text-transform: capitalize;
   letter-spacing: 1px;
@@ -35,149 +17,285 @@
   display: block;
   width: 60px;
   height: 3px;
-  background-color: #b30e97; /* accent color */
+  background-color: #b30e97;
   margin: 12px auto 0;
   border-radius: 2px;
 }
 
-/* Base grid */
-.contact-grid {
-  display: grid;
-  gap: 50px; /* balanced spacing between cards */
-  justify-content: center; /* keeps cards centered */
-  margin-bottom: 40px;
+/* DEFAULT PROFILE CARD WRAPPER - NO GLASS EFFECTS */
+.profile-card-wrapper {
+  /* Remove all glass effects by default */
+  background: none !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 15px !important; /* Add consistent padding for content alignment */
+  
+  /* Card dimensions */
+  width: 100%;
+  max-width: 250px; /* Increase max-width to accommodate larger avatars */
+  min-height: 300px; /* Set minimum height for consistent card sizes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
 
-/* Custom column layouts */
-.two-cols {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 500px;
-  margin: 0 auto;
+.profile-card-wrapper:hover {
+  transform: translateY(-5px);
 }
 
-.three-cols {
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 750px;
-  margin: 0 auto;
-  margin-bottom: 70px;
-}
-
-.four-cols {
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 1500px;   /* ensures proper centering */
-  margin: 0 auto;
-}
-
-/* Card sizing */
-.contact-grid .profile-card {
-  width: 160px;       /* smaller width */
-  height: 200px;      /* compact height */
-  margin: 0 auto;
-}
-
-.contact-grid .profile-card:not(:last-child) {
-  margin-bottom: 16px;
-}
-
-/* Tablet Styles */
-@media (max-width: 1024px) {
-  .contact-page {
-    padding: 1.5rem 0.75rem;
+/* GLASS EFFECT LAYER - ONLY FOR LARGE DEVICES (Bootstrap lg and xl) */
+@media (min-width: 992px) {
+  .profile-card-wrapper {
+    /* Enable glass morphism for large screens */
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37) !important;
+    border-radius: 20px !important;
+    padding: 50px 25px !important; /* Increased padding for better alignment */
+    min-height: 320px; /* Increase height for glass cards */
+    
+    /* Enhanced hover effect for glass cards */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .profile-card-wrapper:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
   }
   
   .section-heading {
     font-size: 2.2rem;
   }
-  
-  .contact-grid {
-    gap: 1.5rem;
-  }
-  
-  .contact-grid.four-cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .contact-page {
-    padding: 1rem 0.5rem;
+/* EXTRA LARGE DEVICES - Enhanced Glass Effect */
+@media (min-width: 1200px) {
+  .profile-card-wrapper {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important;
+    border-radius: 25px !important;
+    padding: 30px 25px !important;
   }
   
-  .section {
-    margin-bottom: 2.5rem;
+  .profile-card-wrapper:hover {
+    transform: translateY(-10px) scale(1.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
   }
   
   .section-heading {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .section-heading::after {
-    width: 60px;
-    height: 3px;
-  }
-  
-  .contact-grid {
-    gap: 1.25rem;
-  }
-  
-  /* All grids become single column on mobile */
-  .contact-grid.two-cols,
-  .contact-grid.three-cols,
-  .contact-grid.four-cols {
-    grid-template-columns: 1fr;
-    max-width: 350px;
-    margin: 0 auto;
+    font-size: 2.4rem;
   }
 }
 
-/* Small Mobile Styles */
-@media (max-width: 480px) {
+/* AVATAR AND TEXT STYLING - CONSISTENT ACROSS ALL DEVICES */
+.profile-card-wrapper .avatar,
+.profile-card-wrapper img {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: 15px;
+  width: 120px; /* Fixed width for consistent sizing */
+  height: 150px; /* Fixed height to maintain aspect ratio */
+  object-fit: cover; /* Ensure images fill the container properly */
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.profile-card-wrapper:hover .avatar,
+.profile-card-wrapper:hover img {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.profile-card-wrapper .member-name {
+  color: #fff;
+  font-weight: 600;
+  margin: 12px 0 8px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  background: none !important;
+  font-size: 1rem; /* Slightly smaller for better fit */
+  text-align: center;
+  line-height: 1.2;
+}
+
+.profile-card-wrapper .member-title {
+  color: #ccc;
+  font-size: 0.85rem; /* Smaller title text */
+  margin: 8px 0 15px 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  background: none !important;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 140px; /* Limit width to prevent overflow */
+}
+
+/* CONTACT BUTTON STYLING - CONSISTENT ACROSS ALL DEVICES */
+.profile-card-wrapper .contact-button {
+  background: rgba(179, 14, 151, 0.8) !important;
+  border: 1px solid rgba(179, 14, 151, 1) !important;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.profile-card-wrapper .contact-button:hover {
+  background: rgba(179, 14, 151, 1) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(179, 14, 151, 0.4);
+  color: white !important;
+  text-decoration: none;
+}
+
+/* SPECIAL HOVER EFFECTS */
+.gold-hover:hover {
+  border-color: rgba(255, 215, 0, 0.5) !important;
+  box-shadow: 0 15px 45px rgba(255, 215, 0, 0.2) !important;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+
+/* Medium devices (tablets) - Clean styling, no glass */
+@media (max-width: 991.98px) {
+  .section-heading {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-card-wrapper {
+    max-width: 180px;
+    min-height: 260px; /* Consistent height for medium devices */
+    padding: 20px 15px !important; /* Adequate padding for content */
+  }
+  
+  .profile-card-wrapper .avatar,
+  .profile-card-wrapper img {
+    width: 110px; /* Slightly smaller for medium devices */
+    height: 140px;
+  }
+  
+  .profile-card-wrapper .member-name {
+    font-size: 0.95rem;
+  }
+  
+  .profile-card-wrapper .member-title {
+    font-size: 0.8rem;
+    max-width: 120px;
+  }
+}
+
+/* Small devices (landscape phones) - Clean styling */
+@media (max-width: 767.98px) {
   .contact-page {
-    padding: 0.75rem 0.25rem;
+    padding: 3rem 1rem !important;
   }
   
   .section-heading {
     font-size: 1.6rem;
+    margin-bottom: 1.5rem;
   }
   
-  .contact-grid {
-    gap: 1rem;
-  }
-  
-  .contact-grid.two-cols,
-  .contact-grid.three-cols,
-  .contact-grid.four-cols {
-    max-width: 300px;
-  }
-}
-
-/* Accessibility and Touch Improvements */
-@media (hover: none) and (pointer: coarse) {
-  /* Touch device optimizations */
-  .contact-grid {
-    gap: 1.5rem;
-  }
-}
-
-/* High DPI/Retina Display Support */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   .section-heading::after {
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    width: 50px;
+    height: 2px;
+  }
+  
+  .profile-card-wrapper {
+    max-width: 170px;
+    min-height: 250px; /* Consistent height for small devices */
+    padding: 18px 12px !important;
+  }
+  
+  .profile-card-wrapper .avatar,
+  .profile-card-wrapper img {
+    width: 150px; /* Smaller for small devices */
+    height: 130px;
+  }
+  
+  .profile-card-wrapper .member-name {
+    font-size: 0.9rem;
+  }
+  
+  .profile-card-wrapper .member-title {
+    font-size: 0.75rem;
+    max-width: 110px;
+  }
+  
+  .profile-card-wrapper .contact-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 20px;
   }
 }
 
-/* Landscape Mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-  .contact-grid.two-cols,
-  .contact-grid.three-cols,
-  .contact-grid.four-cols {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 600px;
+/* Extra small devices (portrait phones) - Minimal styling */
+@media (max-width: 575.98px) {
+  .contact-page {
+    padding: 1.8rem 0.5rem !important;
   }
   
-  .contact-page {
-    padding: 1rem;
+  .section-heading {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0rem;
+  }
+  
+  .profile-card-wrapper {
+    max-width: 180px;
+    min-height: 240px; /* Consistent height for extra small devices */
+    padding: 15px 10px !important;
+  }
+  
+  .profile-card-wrapper .avatar,
+  .profile-card-wrapper img {
+    width: 90px; /* Smallest avatar size */
+    height: 120px;
+  }
+  
+  .profile-card-wrapper .member-name {
+    font-size: 0.85rem;
+    margin: 10px 0 6px 0;
+  }
+  
+  .profile-card-wrapper .member-title {
+    font-size: 0.7rem;
+    margin: 6px 0 12px 0;
+    max-width: 100px;
+  }
+  
+  .profile-card-wrapper .contact-button {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    border-radius: 18px;
+  }
+}
+
+/* Back button responsive styling */
+@media (max-width: 767.98px) {
+  .contact-page button {
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+    border-radius: 20px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .contact-page button {
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
+    border-radius: 18px !important;
   }
 }

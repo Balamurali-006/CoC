@@ -4,35 +4,35 @@ import FeatureCard from './FeatureCard';
 const FeaturesSection = () => {
   const features = [
     {
-      icon: "⚡",
-      title: "Lightning Fast",
-      description: "Rapid prototyping and development with cutting-edge tools and frameworks."
-    },
-    {
-      icon: "🚀",
-      title: "Innovation Hub",
-      description: "Push the boundaries of technology with AI, blockchain, and emerging tech."
+      icon: "🎓",
+      title: "Internship Opportunities",
+      description: "Open doors to career growth with hands-on internship offers from top companies."
     },
     {
       icon: "🏆",
-      title: "Win Big",
-      description: "Compete for amazing prizes, internships, and recognition from top companies."
+      title: "Cash Prizes & Certificates",
+      description: "Win exciting rewards, gain recognition, and boost your portfolio with achievements."
+    },
+    {
+      icon: "🏭",
+      title: "Industry-Driven Problem Statements",
+      description: "Tackle real-world challenges designed in collaboration with leading companies."
+    },
+    {
+      icon: "🌐",
+      title: "Networking with Experts",
+      description: "Connect with industry leaders, mentors, and peers to expand your professional network."
     },
     {
       icon: "🤝",
-      title: "Team Spirit",
-      description: "Collaborate with brilliant minds and build lasting professional networks."
+      title: "Engaging with Recruiters & Peers",
+      description: "Showcase your talent directly to recruiters while collaborating with like-minded innovators."
     },
     {
-      icon: "💡",
-      title: "Mentorship",
-      description: "Learn from industry experts and get guidance from experienced developers."
+      icon: "🛠",
+      title: "Hands-on Exposure to Cutting-Edge Technologies",
+      description: "Gain practical experience with the latest tools, frameworks, and emerging technologies."
     },
-    {
-      icon: "🌟",
-      title: "Showcase",
-      description: "Present your creations to judges, investors, and potential employers."
-    }
   ];
 
   return (
@@ -46,10 +46,10 @@ const FeaturesSection = () => {
             Experience the thrill of competitive programming in an environment designed for innovation and creativity.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <FeatureCard 
+            <FeatureCard
               key={index}
               icon={feature.icon}
               title={feature.title}

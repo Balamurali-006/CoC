@@ -86,10 +86,10 @@ const Header = () => {
             </div>
             <button
 onClick={() => navigate("/developers")}
-  className="relative group flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-white text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105"
+  className="cursor-target relative group flex items-center gap-2 px-4 py-2 text-gray-300 hover:text-white text-lg font-medium rounded-lg transition-all duration-300 hover:scale-105"
 >
   {/* Icon */}
-  <span className="relative z-10 group-hover:translate-x-1 transition-transform duration-300">
+  <span className="relative z-10 group-hover:translate-x-1 transition-transform duration-300 ">
     👨🏻‍💻
   </span>
   {/* Background glow */}

@@ -28,6 +28,49 @@
   --card-radius: 30px;
 }
 
+/* Shiny Gold theme on hover */
+.pc-card-wrapper.gold-hover:hover,
+.pc-card-wrapper.gold-hover.active {
+  /* Rich metallic gold band colors */
+  --sunpillar-1: hsl(50, 100%, 95%);  /* near white highlight */
+  --sunpillar-2: hsl(48, 100%, 85%);  /* light gold */
+  --sunpillar-3: hsl(46, 100%, 70%);  /* soft shine */
+  --sunpillar-4: hsl(44, 95%, 55%);   /* rich gold */
+  --sunpillar-5: hsl(42, 90%, 45%);   /* deep gold */
+  --sunpillar-6: hsl(38, 85%, 35%);   /* dark base */
+
+  /* Inner gradient polished like brushed metal */
+  --inner-gradient: linear-gradient(
+    145deg,
+    rgba(255, 245, 200, 0.4) 0%,
+    rgba(180, 120, 0, 0.3) 50%,
+    rgba(255, 220, 120, 0.25) 100%
+  );
+}
+
+/* Shiny golden glow behind */
+.pc-card-wrapper.gold-hover:hover::before,
+.pc-card-wrapper.gold-hover.active::before {
+  --behind-gradient:
+    radial-gradient(
+      farthest-side circle at var(--pointer-x) var(--pointer-y),
+      hsla(50, 100%, 95%, calc(var(--card-opacity) * 0.5)) 5%,
+      hsla(47, 95%, 75%, calc(var(--card-opacity) * 0.35)) 15%,
+      hsla(44, 90%, 55%, calc(var(--card-opacity) * 0.25)) 45%,
+      transparent 100%
+    ),
+    radial-gradient(35% 52% at 55% 20%, #ffda7a66 0%, transparent 100%),
+    radial-gradient(100% 100% at 50% 50%, #fff1c466 2%, transparent 76%),
+    conic-gradient(
+      from 124deg at 50% 50%, 
+      #fff7d1 0%, 
+      #ffd54a 25%, 
+      #ffcc33 50%, 
+      #ffd54a 75%, 
+      #fff7d1 100%
+    );
+}
+
 .pc-content {
   display: flex;
   flex-direction: column;

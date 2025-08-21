@@ -17,11 +17,27 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Hero Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl">
+        {/* Industry Collaboration Badge */}
+        <div className="relative mb-6 cursor-target">
+          <div className="inline-block relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 rounded-lg blur-sm opacity-60 animate-pulse"></div>
+            <div className="relative bg-gradient-to-r from-gray-900 to-black border border-pink-500/30 rounded-lg px-6 py-2 backdrop-blur-sm transform hover:scale-105 transition-all duration-300 shadow-lg shadow-pink-500/20">
+              <div className="flex items-center justify-center gap-2">
+                <span className="w-2 h-2 bg-pink-500 rounded-full animate-ping"></span>
+                <span className="text-white font-bold text-sm tracking-widest uppercase">
+                  Industry Collaborated Hackathon
+                </span>
+                <span className="w-2 h-2 bg-purple-500 rounded-full animate-ping"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Main Title */}
         <h1 className="text-6xl md:text-8xl font-bold mb-6">
           <span
             className="bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-pulse"
-            style={{ fontFamily: "'Bangers', cursive" }}
+            style={{ fontFamily: "'bebas-neue', cursive" }}
           >
             CODE
           </span>
@@ -30,14 +46,14 @@ const HeroSection = () => {
             style={{
               display: "inline-block",
               margin: "0 4px",
-              fontFamily: "'Bangers', cursive"
+              fontFamily: "'bebas-neue', cursive"
             }}
           >
             -O-
           </span>
           <span
             className="text-white"
-            style={{ fontFamily: "'Bangers', cursive" }}
+            style={{ fontFamily: "'bebas-neue', cursive" }}
           >
             CLOCK
           </span>
@@ -67,7 +83,7 @@ const HeroSection = () => {
           {/* Enhanced Event Info Cards */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             {/* Date Card */}
-            <div className="group relative">
+            <div className="group relative cursor-target">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative bg-black border border-cyan-400/30 rounded-xl px-6 py-4 transform hover:scale-105 transition-all duration-300">
                 <div className="text-cyan-400 text-sm font-medium mb-1">EVENT DATE</div>
@@ -79,7 +95,7 @@ const HeroSection = () => {
             </div>
 
             {/* Prize Pool Card */}
-            <div className="group relative">
+            <div className="group relative cursor-target">
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative bg-black border border-yellow-400/30 rounded-xl px-6 py-4 transform hover:scale-105 transition-all duration-300">
                 <div className="text-yellow-400 text-sm font-medium mb-1">PRIZE POOL</div>
@@ -91,7 +107,7 @@ const HeroSection = () => {
             </div>
 
             {/* Registration Fee Card */}
-            <div className="group relative">
+            <div className="group relative cursor-target">
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative bg-black border border-pink-400/30 rounded-xl px-6 py-4 transform hover:scale-105 transition-all duration-300">
                 <div className="text-pink-400 text-sm font-medium mb-1">ENTRY FEE</div>

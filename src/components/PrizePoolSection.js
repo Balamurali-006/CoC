@@ -253,8 +253,8 @@ const PrizePoolSection = () => {
                             onMouseLeave={() => setHoveredPrize(null)}
                           >
                             {/* Pop-out Prize */}
-                            <div className={`absolute -top-12 md:-top-16 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${hoveredPrize === 'second' ? 'animate-prize-popup z-50' : 'opacity-0 scale-0'}`}>
-                              <div className="bg-black/80 backdrop-blur-lg rounded-lg px-3 py-2 md:px-4 md:py-3 border border-gray-400/50">
+                            <div className={` absolute -top-12 md:-top-16 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${hoveredPrize === 'second' ? 'animate-prize-popup z-50' : 'opacity-0 scale-0'}`}>
+                              <div className=" bg-black/80 backdrop-blur-lg rounded-lg px-3 py-2 md:px-4 md:py-3 border border-gray-400/50">
                                 <div className="text-gray-300 font-black text-lg md:text-2xl">₹15,000</div>
                                 <div className="text-gray-400 font-bold text-xs md:text-sm">RUNNER-UP!</div>
                               </div>
@@ -287,7 +287,7 @@ const PrizePoolSection = () => {
                             
                             <div className={`border-gradient-bronze relative transition-all duration-500 transform ${hoveredPrize === 'third' ? 'shadow-glow-bronze' : 'hover:scale-102'}`}>
                               <div className="bg-black/70 backdrop-blur-xl rounded-lg md:rounded-xl px-4 py-3 md:px-6 md:py-4 flex items-center justify-between">
-                                <div className="flex items-center space-x-2 md:space-x-3">
+                                <div className="cursor-target flex items-center space-x-2 md:space-x-3">
                                   <span className="text-2xl md:text-3xl">🥉</span>
                                   <span className="text-orange-400 font-bold text-lg md:text-xl">3rd Place</span>
                                 </div>
@@ -308,7 +308,7 @@ const PrizePoolSection = () => {
 
           {/* Call to Action */}
           <div className="text-center relative">
-            <div className="group relative inline-block">
+            <div className="group relative inline-block cursor-target">
               <div className="absolute -inset-4 bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-60 group-hover:opacity-100 animate-pulse"></div>
               <button className="relative px-6 md:px-12 py-4 md:py-6 bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 text-white font-black text-base md:text-xl rounded-full shadow-3d transform group-hover:scale-105 transition-all duration-500 border-2 border-white/30">
                 <span className="relative z-10 tracking-wider">🚀 REGISTER NOW! 🚀</span>
