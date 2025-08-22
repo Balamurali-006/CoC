@@ -6,6 +6,8 @@ import './HeroSection.css';
 import Spline from '@splinetool/react-spline';
 import SplitText from './SplitText';
 import TargetCursor from "./TargetCursor";
+// Import your logo from assets folder
+import logo from '../components/assets/SaaS22.svg'; // Adjust the path based on your actual logo filename
 
 
 const HeroSection = () => {
@@ -17,6 +19,15 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Hero Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl">
+        {/* Company Logo */}
+        <div className="mb-8 ">
+          <img 
+            src={logo} 
+            alt="Company Logo" 
+            className="bg-white mx-auto h-16 w-auto md:h-20 opacity-90 hover:opacity-100 transition-opacity duration-300"
+          />
+        </div>
+
         {/* Industry Collaboration Badge */}
         <div className="relative mb-6 cursor-target">
           <div className="inline-block relative">
@@ -123,10 +134,12 @@ const HeroSection = () => {
         {/* Button */}
          <TargetCursor spinDuration={2} hideDefaultCursor={true} />
         <div className="flex justify-center items-center">
-          <button className=" cursor-target group relative px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg font-semibold text-white transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/25">
-            <span className="relative z-10 ">REGISTER NOW</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
+          <button className="cursor-target group relative px-10 py-4 bg-black border rounded-lg font-semibold text-white transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25">
+                <span className="relative z-10 flex items-center space-x-2 ">
+                  <a href='https://docs.google.com/forms/d/e/1FAIpQLSe1PpoE2xCtN9zWfis-sVEI74pA1PEhqo1L5Cv9na0nKskr9g/viewform'>REGISTER</a>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
         </div>
       </div>
 

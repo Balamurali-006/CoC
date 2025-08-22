@@ -311,7 +311,7 @@ const PrizePoolSection = () => {
             <div className="group relative inline-block cursor-target">
               <div className="absolute -inset-4 bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-60 group-hover:opacity-100 animate-pulse"></div>
               <button className="relative px-6 md:px-12 py-4 md:py-6 bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 text-white font-black text-base md:text-xl rounded-full shadow-3d transform group-hover:scale-105 transition-all duration-500 border-2 border-white/30">
-                <span className="relative z-10 tracking-wider">🚀 REGISTER NOW! 🚀</span>
+                <span className="relative z-10 tracking-wider"><a href='https://docs.google.com/forms/d/e/1FAIpQLSe1PpoE2xCtN9zWfis-sVEI74pA1PEhqo1L5Cv9na0nKskr9g/viewform'>🚀 REGISTER NOW! 🚀</a></span>
               </button>
             </div>
             <p className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 mt-4 md:mt-6 text-sm md:text-lg font-bold">

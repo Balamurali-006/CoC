@@ -75,7 +75,7 @@ const HackathonCountdown = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-900/20 via-purple-900/20 to-black opacity-80"></div>
+        <div className="absolute inset-0 bg-black"></div>
         
         {/* Floating particles */}
         <div className="absolute inset-0">
@@ -97,7 +97,7 @@ const HackathonCountdown = () => {
         <div 
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: `linear-gradient(rgba(236, 72, 153, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(236, 72, 153, 0.3) 1px, transparent 1px)`,
+            // backgroundImage: `black`,
             backgroundSize: '50px 50px'
           }}
         />

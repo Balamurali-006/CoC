@@ -465,148 +465,74 @@ background-image:
   }
 }
 
-@media (max-width: 768px) {
-  .pc-card {
-    height: 55svh;
-    max-height: 350px;
+
+/* =========================
+   Mobile View Fixes (<= 768px)
+   ========================= */
+@media screen and (max-width: 768px) {
+  .profile-card {
+    width: 90% !important;   /* make card fit mobile screen */
+    max-width: 350px;
+    margin: 0 auto 1rem;
+    flex-direction: column;  /* stack image and content vertically */
+    text-align: center;
   }
 
-  .pc-details {
-    top: 2em;
+  .profile-card img {
+    width: 100px;    /* smaller image */
+    height: 100px;
+    margin: 0 auto 0.5rem;
+    display: block;
   }
 
-  .pc-details h3 {
-    font-size: min(4svh, 2.5em);
+  .profile-card-content {
+    display: block;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem; /* adjust text size for readability */
+    white-space: normal; /* allow wrapping */
+    overflow: visible;   /* ensure text is shown */
   }
 
-  .pc-details p {
-    font-size: 14px;
+  .profile-card-content h3,
+  .profile-card-content p {
+    margin: 0.25rem 0;
   }
 
-  .pc-user-info {
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
-    padding: 10px 12px;
-  }
-
-  .pc-mini-avatar {
-    width: 28px;
-    height: 28px;
-  }
-
-  .pc-user-details {
-    gap: 10px;
-  }
-
-  .pc-handle {
-    font-size: 13px;
-  }
-
-  .pc-status {
-    font-size: 10px;
-  }
-
-  .pc-contact-btn {
-    padding: 6px 12px;
-    font-size: 11px;
+  .profile-card-content a {
+    display: inline-block;
+    margin: 0.25rem;
   }
 }
 
-@media (max-width: 480px) {
-  .pc-card {
-    height: 50svh;
-    max-height: 300px;
+/* =========================
+   Extra Small Phones (<= 480px)
+   ========================= */
+@media screen and (max-width: 480px) {
+  .profile-card {
+    width: 95% !important;
+    padding: 0.75rem;
   }
 
-  .pc-details {
-    top: 1.5em;
+  .profile-card img {
+    width: 80px;
+    height: 80px;
   }
 
-  .pc-details h3 {
-    font-size: min(3.5svh, 2em);
+  .profile-card-content {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
   }
 
-  .pc-details p {
-    font-size: 12px;
-    top: -8px;
+  .profile-card-content h3 {
+    font-size: 1rem;
   }
 
-  .pc-user-info {
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
-    padding: 8px 10px;
-    border-radius: 50px;
+  .profile-card-content p {
+    font-size: 0.85rem;
   }
-
-  .pc-mini-avatar {
-    width: 24px;
-    height: 24px;
-  }
-
-  .pc-user-details {
-    gap: 8px;
-  }
-
-  .pc-handle {
-    font-size: 12px;
-  }
-
-  .pc-status {
-    font-size: 9px;
-  }
-
-  .pc-contact-btn {
-    padding: 5px 10px;
-    font-size: 10px;
-    border-radius: 50px;
-  }
+  
 }
-
-@media (max-width: 320px) {
-  .pc-card {
-    height: 45svh;
-    max-height: 280px;
-  }
-
-  .pc-details h3 {
-    font-size: min(3svh, 1.5em);
-  }
-
-  .pc-details p {
-    font-size: 11px;
-  }
-
-  .pc-user-info {
-    padding: 6px 8px;
-    border-radius: 50px;
-  }
-
-  .pc-mini-avatar {
-    width: 20px;
-    height: 20px;
-  }
-
-  .pc-user-details {
-    gap: 6px;
-  }
-
-  .pc-handle {
-    font-size: 11px;
-  }
-
-  .pc-status {
-    font-size: 8px;
-  }
-
-  .pc-contact-btn {
-    padding: 4px 8px;
-    font-size: 9px;
-    border-radius: 50px;
-  }
-}
-
 
 .pc-contact-icons {
   display: flex;
@@ -624,9 +550,4 @@ background-image:
 .pc-contact-icons img:hover {
   transform: scale(1.1);
 }
-
-
-
-
-
 
