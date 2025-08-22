@@ -551,3 +551,39 @@ background-image:
   transform: scale(1.1);
 }
 
+@media screen and (max-width: 783px) {
+  .pc-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    height: auto; /* let content decide */
+    width: 90%;   /* fit nicely inside screen */
+    max-width: 350px;
+    margin: 0 auto; /* center the card */
+    overflow: hidden; /* prevent gradient/shadows overflowing */
+  }
+
+  .pc-avatar {
+    margin: 0 auto 12px auto; /* space below image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pc-avatar img.avatar {
+    border-radius: 12px;
+    max-width: 180px; /* keep consistent */
+    width: 100%;
+    height: auto;
+  }
+
+  .pc-content {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+}
