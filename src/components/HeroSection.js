@@ -124,7 +124,7 @@ const HeroSection = () => {
                 <div className="text-pink-400 text-sm font-medium mb-1">ENTRY FEE</div>
                 <div className="text-white font-bold text-lg flex items-center gap-2">
                   <span className="text-2xl">💰</span>
-                  ₹300
+                  ₹500
                 </div>
               </div>
             </div>
