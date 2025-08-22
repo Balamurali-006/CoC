@@ -552,6 +552,7 @@ background-image:
 }
 
 @media screen and (max-width: 783px) {
+  
   .pc-card {
     display: flex;
     flex-direction: column;
@@ -587,3 +588,29 @@ background-image:
     text-align: center;
   }
 }
+
+
+/* =========================
+   Simplified effect on mobile
+   ========================= */
+@media (max-width: 783px) {
+  .pc-card {
+    transform: none !important;      /* no 3D tilt */
+    transition: 0.3s ease-in-out;    /* keep a smooth glow */
+  }
+
+  .pc-card:hover,
+  .pc-card.active {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.25); /* glowing border */
+    transform: none !important; /* avoid accidental tilt */
+  }
+
+  .pc-card * {
+    pointer-events: auto; /* make links/icons tappable */
+  }
+
+  .pc-card-wrapper {
+    touch-action: auto !important; /* scrolling works */
+  }
+}
+
