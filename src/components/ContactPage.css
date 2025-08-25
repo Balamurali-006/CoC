@@ -103,3 +103,14 @@
     height: auto;     /* let content define height */
   }
 }
+
+/* Lower staff advisor cards */
+.staff-advisor {
+  transform: translateY(50px);  /* Try 20–30px until it looks right */
+}
+
+@media (max-width: 480px) {
+  .staff-advisor {
+    transform: none;
+  }
+}

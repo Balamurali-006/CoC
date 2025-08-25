@@ -10,7 +10,7 @@ const FeatureCard = ({ icon, title, description, delay = 0 }) => {
       }}
     >
       {/* Main Glow Effect - Pink to Purple */}
-      <div 
+      {/* <div 
         className="absolute -inset-2 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 rounded-xl opacity-0 group-hover:opacity-100 blur-lg transition-all duration-700 animate-pulse"
         style={{
           filter: 'blur(15px)',
@@ -19,7 +19,7 @@ const FeatureCard = ({ icon, title, description, delay = 0 }) => {
           animation: 'group-hover:gradientShift 3s ease infinite'
         }}
       ></div>
-      
+       */}
       {/* Inner Shadow Glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-purple-500/15 to-pink-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
       

@@ -1,25 +1,28 @@
 import React from 'react';
 
+import saas_logo from './assets/SaaS22.svg';
+
 const Sponsors = () => {
   // Your 3 sponsors
   const sponsors = [
-    {
-      id: 1,
-      name: "TechCorp",
-      logo: "https://via.placeholder.com/150x75/FF69B4/FFFFFF?text=TechCorp",
-      tier: "Platinum",
-      website: "https://example.com"
-    },
-    {
+     {
       id: 2,
-      name: "InnovateNow",
+      name: "Sponsor1",
       logo: "https://via.placeholder.com/150x75/8B008B/FFFFFF?text=InnovateNow",
       tier: "Gold",
       website: "https://example.com"
     },
     {
+      id: 1,
+      name: "SaaS 22",
+      logo: saas_logo,
+      tier: "Platinum",
+      website: "https://www.saas22.com/"
+    },
+   
+    {
       id: 3,
-      name: "CodeMaster",
+      name: "Sponsor2",
       logo: "https://via.placeholder.com/150x75/FF1493/FFFFFF?text=CodeMaster",
       tier: "Gold",
       website: "https://example.com"

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import TargetCursor from "./TargetCursor";
+import Spline from '@splinetool/react-spline';
 import './TeamSection.css';
 
 const TeamSection = () => {
@@ -18,7 +19,6 @@ const TeamSection = () => {
           impactful, memorable, and truly transformative.
         </p>
 
-
         {/* Contact Us Button */}
         <button
           onClick={() => navigate("/contact")}
@@ -28,9 +28,15 @@ const TeamSection = () => {
         </button>
       </div>
 
-      {/* Right side - Placeholder */}
+      {/* Right side - Spline Component */}
       <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-        <div className="w-64 h-64 bg-gradient-to-tr from-pink-400 to-purple-500 rounded-full animate-float shadow-2xl" />
+        <div className="relative w-64 h-64 bg-gradient-to-tr from-pink-400 to-purple-500 rounded-full animate-float shadow-2xl overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center">
+            
+          </div>
+          {/* Hide Spline watermark */}
+          
+        </div>
       </div>
 
       {/* Custom animation styles */}
@@ -51,12 +57,32 @@ const TeamSection = () => {
         .animate-pulse-glow {
           animation: pulse-glow 1.8s infinite ease-in-out;
         }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+
+        /* Additional CSS to ensure watermark removal */
+        .spline-watermark,
+        div[class*="watermark"],
+        div[style*="position: absolute"][style*="bottom"],
+        div[style*="position: fixed"][style*="bottom"] {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+        }
       `}</style>
     </div>
   );
 };
 
 export default TeamSection;
-
-
-

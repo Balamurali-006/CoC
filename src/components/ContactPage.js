@@ -86,12 +86,12 @@ const ContactPage = () => {
             }
             enableMobileTilt={false}
             onContactClick={() => console.log(`Contact: ${member.name}`)}
-            className={`cursor-target ${
-              member.title === "Professor & Head of the Department" ||
-              member.title === "Secretary"
-                ? "gold-hover"
-                : ""
-            }`}
+            className={`cursor-target
+  ${member.title === "Professor & Head of the Department" || member.title === "Secretary"
+    ? "gold-hover"
+    : ""}
+  ${member.title === "Staff Advisor" ? "staff-advisor" : ""}
+`}
           />
         ))}
       </div>
