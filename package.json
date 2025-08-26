@@ -48,8 +48,5 @@
       "last 1 safari version"
     ]
   },
-  "build": "cross-env GENERATE_SOURCEMAP=false CI=false react-scripts build",
-  "devDependencies": {
-    "cross-env": "^10.0.0"
-  }
+  "build": "GENERATE_SOURCEMAP=false CI=false react-scripts build"
 }
