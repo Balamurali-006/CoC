@@ -43,7 +43,7 @@ const CodeOClockLoader = ({ onComplete }) => {
 
   useEffect(() => {
     // 8-second total loading sequence
-    const totalLoadingTime = 6000; // 6 seconds for loading progress (leaving 2 seconds for completion stages)
+    const totalLoadingTime = 4500; // 6 seconds for loading progress (leaving 2 seconds for completion stages)
     
     // Clock stage progression
     if (progress < 30) {
@@ -73,10 +73,21 @@ const CodeOClockLoader = ({ onComplete }) => {
       });
     }, 80);
 
-    // Clock rotation animation
+    // Clock rotation animation - Smooth continuous rotation completing 2 full rotations (720°) over 6 seconds
+    // 720 degrees / 6000ms = 0.12 degrees per ms
+    // At 50ms intervals, we need 0.12 * 50 = 6 degrees per interval for smooth movement
     const clockInterval = setInterval(() => {
-      setClockRotation(prev => (prev + 6) % 360); // Smooth continuous rotation
-    }, 50);
+      setClockRotation(prev => {
+        if (progress >= 100) {
+          return 4500; // Stop at exactly 2 complete rotations
+        }
+        
+        // Continuous smooth rotation - 6 degrees every 50ms = 720° over 6000ms
+        const newRotation = prev + 6;
+        
+        return Math.min(newRotation, 4500); // Cap at 720 degrees (2 full rotations)
+      });
+    }, 50); // Smooth 50ms intervals for fluid movement
 
     // Code snippet animation - faster updates
     const codeInterval = setInterval(() => {
@@ -103,7 +114,7 @@ const CodeOClockLoader = ({ onComplete }) => {
       clearInterval(codeInterval);
       clearInterval(glitchInterval);
     };
-  }, []);
+  }, [progress]);
 
   // Handle completion - with alarm sequence
   useEffect(() => {
@@ -115,7 +126,7 @@ const CodeOClockLoader = ({ onComplete }) => {
         setTimeout(() => {
           setLoadingStage('ready-text');
         }, 300);
-      }, 2000);
+      }, 4500);
     }
   }, [loadingStage]);
 
@@ -358,11 +369,11 @@ const CodeOClockLoader = ({ onComplete }) => {
                       ))}
                     </div>
 
-                    {/* Enhanced Clock Hands - Alarm State */}
+                    {/* Enhanced Clock Hands - SLOWER rotation for 24-hour hackathon */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      {/* Hour Hand - Points to 12 when alarm rings */}
+                      {/* Hour Hand - Smooth 2 rotations over loading time */}
                       <div 
-                        className={`absolute rounded-full z-20 transition-all duration-500 ${
+                        className={`absolute rounded-full z-20 transition-all duration-100 ${
                           alarmRinging 
                             ? 'bg-gradient-to-t from-red-500 to-red-400 shadow-red-500/70' 
                             : 'bg-gradient-to-t from-pink-500 to-pink-400 shadow-pink-500/70'
@@ -374,8 +385,8 @@ const CodeOClockLoader = ({ onComplete }) => {
                           top: '50%',
                           transformOrigin: '50% 100%',
                           transform: alarmRinging 
-                            ? `translate(-50%, -100%) rotate(0deg)` 
-                            : `translate(-50%, -100%) rotate(${45 + clockRotation / 12}deg)`,
+                            ? `translate(-50%, -100%) rotate(720deg)` 
+                            : `translate(-50%, -100%) rotate(${clockRotation}deg)`, // Smooth 2 rotations
                           boxShadow: alarmRinging 
                             ? '0 0 15px rgba(239, 68, 68, 0.8)' 
                             : '0 0 15px rgba(236, 72, 153, 0.8)',
@@ -383,9 +394,9 @@ const CodeOClockLoader = ({ onComplete }) => {
                         }}
                       ></div>
                       
-                      {/* Minute Hand - Points to 12 when alarm rings */}
+                      {/* Minute Hand - 12x faster for realistic clock behavior */}
                       <div 
-                        className={`absolute rounded-full z-20 transition-all duration-500 ${
+                        className={`absolute rounded-full z-20 transition-all duration-100 ${
                           alarmRinging 
                             ? 'bg-gradient-to-t from-red-500 to-red-400 shadow-red-500/70' 
                             : 'bg-gradient-to-t from-purple-500 to-purple-400 shadow-purple-500/70'
@@ -397,8 +408,8 @@ const CodeOClockLoader = ({ onComplete }) => {
                           top: '50%',
                           transformOrigin: '50% 100%',
                           transform: alarmRinging 
-                            ? `translate(-50%, -100%) rotate(0deg)` 
-                            : `translate(-50%, -100%) rotate(${120 + clockRotation}deg)`,
+                            ? `translate(-50%, -100%) rotate(${1000 * 12}deg)` 
+                            : `translate(-50%, -100%) rotate(${clockRotation * 12}deg)`, // 24 rotations total
                           boxShadow: alarmRinging 
                             ? '0 0 15px rgba(239, 68, 68, 0.8)' 
                             : '0 0 15px rgba(139, 92, 246, 0.8)',
@@ -406,9 +417,9 @@ const CodeOClockLoader = ({ onComplete }) => {
                         }}
                       ></div>
 
-                      {/* Second Hand - Spins rapidly when alarm rings */}
+                      {/* Second Hand - Faster but smoother movement */}
                       <div 
-                        className="absolute bg-gradient-to-t from-red-500 to-red-400 shadow-lg shadow-red-500/70 rounded-full z-20"
+                        className="absolute bg-gradient-to-t from-red-500 to-red-400 shadow-lg shadow-red-500/70 rounded-full z-20 transition-all duration-100"
                         style={{
                           width: '2px',
                           height: '90px',
@@ -416,17 +427,16 @@ const CodeOClockLoader = ({ onComplete }) => {
                           top: '50%',
                           transformOrigin: '50% 100%',
                           transform: alarmRinging 
-                            ? `translate(-50%, -100%) rotate(${clockRotation * 30}deg)` 
-                            : `translate(-50%, -100%) rotate(${180 + clockRotation * 6}deg)`,
+                            ? `translate(-50%, -100%) rotate(${720 * 20}deg)` 
+                            : `translate(-50%, -100%) rotate(${clockRotation * 20}deg)`, // 40 rotations total (realistic second hand)
                           boxShadow: '0 0 12px rgba(239, 68, 68, 0.8)',
-                          borderRadius: '1px',
-                          animation: alarmRinging ? 'spin 0.1s linear infinite' : 'none'
+                          borderRadius: '1px'
                         }}
                       ></div>
 
                       {/* Second Hand Tail */}
                       <div 
-                        className="absolute bg-gradient-to-t from-red-500 to-red-400 shadow-lg shadow-red-500/50 rounded-full z-19"
+                        className="absolute bg-gradient-to-t from-red-500 to-red-400 shadow-lg shadow-red-500/50 rounded-full z-19 transition-all duration-100"
                         style={{
                           width: '1px',
                           height: '20px',
@@ -434,10 +444,9 @@ const CodeOClockLoader = ({ onComplete }) => {
                           top: '50%',
                           transformOrigin: '50% 0%',
                           transform: alarmRinging 
-                            ? `translate(-50%, 0%) rotate(${clockRotation * 30 + 180}deg)` 
-                            : `translate(-50%, 0%) rotate(${180 + clockRotation * 6 + 180}deg)`,
-                          boxShadow: '0 0 8px rgba(239, 68, 68, 0.6)',
-                          animation: alarmRinging ? 'spin 0.1s linear infinite' : 'none'
+                            ? `translate(-50%, 0%) rotate(${720 * 20 + 180}deg)` 
+                            : `translate(-50%, 0%) rotate(${clockRotation * 30 + 180}deg)`,
+                          boxShadow: '0 0 8px rgba(239, 68, 68, 0.6)'
                         }}
                       ></div>
 
@@ -616,11 +625,6 @@ const CodeOClockLoader = ({ onComplete }) => {
         @keyframes wiggle-right {
           0%, 100% { transform: rotate(15deg); }
           50% { transform: rotate(25deg); }
-        }
-        
-        @keyframes spin {
-          from { transform: translate(-50%, -100%) rotate(0deg); }
-          to { transform: translate(-50%, -100%) rotate(360deg); }
         }
         
         .animate-wiggle-left {

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  useNavigate
 } from "react-router-dom";
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
@@ -16,19 +17,20 @@ import PrizePoolSection from './components/PrizePoolSection';
 import CodeOClockLoader from './components/CodeOClockLoader';
 import TeamSection from './components/TeamSection';
 import ContactPage from './components/ContactPage';
+import AIDay from './components/AIDay';
 import "./App.css";
 import Sponsors from './components/sponsors';
 
 // --------------------
 // Main App Content Component (Homepage)
 // --------------------
-const MainAppContent = ({ onNavigateToDevelopers }) => {
+const MainAppContent = ({ onNavigateToDevelopers, onNavigateToAIDay }) => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Header />
       
       <section id="home">
-        <HeroSection />
+        <HeroSection onNavigateToAIDay={onNavigateToAIDay} />
       </section>
 
       <section id="count">
@@ -91,6 +93,59 @@ const MainAppContent = ({ onNavigateToDevelopers }) => {
 };
 
 // --------------------
+// Navigation Wrapper Component
+// --------------------
+const AppContent = () => {
+  const navigate = useNavigate();
+
+  const navigateToDevelopers = () => {
+    navigate("/developers");
+  };
+
+  const navigateToHome = () => {
+    navigate("/");
+  };
+
+  const navigateToAIDay = () => {
+    navigate("/ai-day");
+  };
+
+  const navigateBackFromAIDay = () => {
+    navigate("/");
+  };
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <MainAppContent 
+            onNavigateToDevelopers={navigateToDevelopers}
+            onNavigateToAIDay={navigateToAIDay}
+          />
+        }
+      />
+      <Route
+        path="/developers"
+        element={<DevelopersPage onGoBack={navigateToHome} />}
+      />
+      <Route 
+        path="/contact" 
+        element={<ContactPage scrollToTop={true} />} 
+      />
+      <Route
+        path="/ai-day"
+        element={<AIDay onNavigateBack={navigateBackFromAIDay} />}
+      />
+      <Route
+        path="/header"
+        element={<DevelopersPage onGoBack={navigateToDevelopers} />}
+      />
+    </Routes>
+  );
+};
+
+// --------------------
 // Main App Component
 // --------------------
 const App = () => {
@@ -102,37 +157,13 @@ const App = () => {
     }, 300);
   };
 
-  const navigateToDevelopers = () => {
-    window.location.href = "/developers"; // simpler with Router
-  };
-
-  const navigateToHome = () => {
-    window.location.href = "/"; // simpler with Router
-  };
-
   return (
     <Router>
       <div>
         {showLoader ? (
           <CodeOClockLoader onComplete={handleLoaderComplete} />
         ) : (
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <MainAppContent onNavigateToDevelopers={navigateToDevelopers} />
-              }
-            />
-            <Route
-              path="/developers"
-              element={<DevelopersPage onGoBack={navigateToHome} />}
-            />
-            <Route path="/contact" element={<ContactPage scrollToTop={true} />} />
-             <Route
-              path="/header"
-              element={<DevelopersPage onGoBack={navigateToDevelopers} />}
-            />
-          </Routes>
+          <AppContent />
         )}
       </div>
     </Router>
