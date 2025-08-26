@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TargetCursor from "./TargetCursor";
 import { useNavigate } from "react-router-dom";
 import CIT from './assets/CIT.png';
-import AI from './assets/AI.jpg'
+import AI from './assets/ai.jpg'
 
 const Header = () => {
   const navigate = useNavigate();
