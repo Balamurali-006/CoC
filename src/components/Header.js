@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TargetCursor from "./TargetCursor";
 import { useNavigate } from "react-router-dom";
 import CIT from './assets/CIT.png';
-import AI from './assets/ai.jpg'
+// import AI from './assets/AI.jpg'
 
 const Header = () => {
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ const Header = () => {
             </div>
 
             {/* AI&DS Logo */}
-            <div className="relative group">
+            {/* <div className="relative group">
               <div className="w-10 h-10 flex items-center justify-center">
                 <img 
                   src={AI}
@@ -84,7 +84,7 @@ const Header = () => {
                 />
                 <span className="text-white font-bold text-xs hidden">AI&DS</span>
               </div>
-            </div>
+            </div> */}
 
             {/* CodeOClock Logo */}
             <div className="flex items-center space-x-3">
