@@ -3,147 +3,147 @@ import InfiniteMenu from './InfiniteMenu.js';
 
 // Import images from assets
 
-import img0 from './assets/img0.jpg';
-import img1 from './assets/img1.jpg';
-import img2 from './assets/img2.JPG';
-import img3 from './assets/img3.JPG';
-import img4 from './assets/img4.JPG';
-import img5 from './assets/img5.JPG';
-import img6 from './assets/img6.jpg';
-import img7 from './assets/img7.JPG';
-import img8 from './assets/img8.JPG';
-import img9 from './assets/img9.JPG';
-import img10 from './assets/img10.jpg';
-import img11 from './assets/img11.jpg';
-import img12 from './assets/img12.JPG';
-import img13 from './assets/img13.jpg';
-import img14 from './assets/img14.jpg';
-import img15 from './assets/img15.jpg';
-import img16 from './assets/img16.jpg';
-import img17 from './assets/img17.JPG';  
-import img18 from './assets/img18.jpg';
-import img19 from './assets/img19.jpg'; 
-import img20 from './assets/img20.JPG';
-import img21 from './assets/img21.jpg';
-import img22 from './assets/img22.jpg';
-import img23 from './assets/img23.jpg';
-import img24 from './assets/img24.jpg';
-import img25 from './assets/img25.jpg';
-import img26 from './assets/img26.JPG';
-import img27 from './assets/img27.jpg';
+import IMG0 from './assets/img0.jpg';
+import IMG1 from './assets/img1.jpg';
+import IMG2 from './assets/img2.JPG';
+import IMG3 from './assets/img3.JPG';
+import IMG4 from './assets/img4.JPG';
+import IMG5 from './assets/img5.JPG';
+import IMG6 from './assets/img6.jpg';
+import IMG7 from './assets/img7.JPG';
+import IMG8 from './assets/img8.JPG';
+import IMG9 from './assets/img9.JPG';
+import IMG10 from './assets/img10.jpg';
+import IMG11 from './assets/img11.jpg';
+import IMG12 from './assets/img12.JPG';
+import IMG13 from './assets/img13.jpg';
+import IMG14 from './assets/img14.jpg';
+import IMG15 from './assets/img15.jpg';
+import IMG16 from './assets/img16.jpg';
+import IMG17 from './assets/img17.JPG';  
+import IMG18 from './assets/img18.jpg';
+import IMG19 from './assets/img19.jpg'; 
+import IMG20 from './assets/img20.JPG';
+import IMG21 from './assets/img21.jpg';
+import IMG22 from './assets/img22.jpg';
+import IMG23 from './assets/img23.jpg';
+import IMG24 from './assets/img24.jpg';
+import IMG25 from './assets/img25.jpg';
+import IMG26 from './assets/img26.JPG';
+import IMG27 from './assets/img27.jpg';
 
 
 const Galary_Globes = [
   {
-    image: img1,
+    image: IMG1,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img2,
+    image: IMG2,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img3,
+    image: IMG3,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img4,
+    image: IMG4,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img5,
+    image: IMG5,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img6,
+    image: IMG6,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img7,
+    image: IMG7,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img8,
+    image: IMG8,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img9,
+    image: IMG9,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img10,
+    image: IMG10,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img11,
+    image: IMG11,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img12,
+    image: IMG12,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img13,
+    image: IMG13,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img14,
+    image: IMG14,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img15,
+    image: IMG15,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img16,
+    image: IMG16,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img0,
+    image: IMG0,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img17,
+    image: IMG17,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img18,
+    image: IMG18,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img19,
+    image: IMG19,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img20,
+    image: IMG20,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img21,
+    image: IMG21,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img22,
+    image: IMG22,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img23,
+    image: IMG23,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img24,
+    image: IMG24,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img25,
+    image: IMG25,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img26,
+    image: IMG26,
     description: 'Drag and Move to explore more'
   },
   {
-    image: img27,
+    image: IMG27,
     description: 'Drag and Move to explore more'
   },
 ];
