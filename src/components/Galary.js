@@ -3,34 +3,34 @@ import InfiniteMenu from './InfiniteMenu.js';
 
 // Import images from assets
 
-import IMG0 from './assets/img0.jpg';
-import IMG1 from './assets/img1.jpg';
+import IMG0 from './assets/img0.JPG';
+import IMG1 from './assets/img1.JPG';
 import IMG2 from './assets/img2.JPG';
 import IMG3 from './assets/img3.JPG';
 import IMG4 from './assets/img4.JPG';
 import IMG5 from './assets/img5.JPG';
-import IMG6 from './assets/img6.jpg';
+import IMG6 from './assets/img6.JPG';
 import IMG7 from './assets/img7.JPG';
 import IMG8 from './assets/img8.JPG';
 import IMG9 from './assets/img9.JPG';
-import IMG10 from './assets/img10.jpg';
-import IMG11 from './assets/img11.jpg';
+import IMG10 from './assets/img10.JPG';
+import IMG11 from './assets/img11.JPG';
 import IMG12 from './assets/img12.JPG';
-import IMG13 from './assets/img13.jpg';
-import IMG14 from './assets/img14.jpg';
-import IMG15 from './assets/img15.jpg';
-import IMG16 from './assets/img16.jpg';
+import IMG13 from './assets/img13.JPG';
+import IMG14 from './assets/img14.JPG';
+import IMG15 from './assets/img15.JPG';
+import IMG16 from './assets/img16.JPG';
 import IMG17 from './assets/img17.JPG';  
-import IMG18 from './assets/img18.jpg';
-import IMG19 from './assets/img19.jpg'; 
+import IMG18 from './assets/img18.JPG';
+import IMG19 from './assets/img19.JPG'; 
 import IMG20 from './assets/img20.JPG';
-import IMG21 from './assets/img21.jpg';
-import IMG22 from './assets/img22.jpg';
-import IMG23 from './assets/img23.jpg';
-import IMG24 from './assets/img24.jpg';
-import IMG25 from './assets/img25.jpg';
+import IMG21 from './assets/img21.JPG';
+import IMG22 from './assets/img22.JPG';
+import IMG23 from './assets/img23.JPG';
+import IMG24 from './assets/img24.JPG';
+import IMG25 from './assets/img25.JPG';
 import IMG26 from './assets/img26.JPG';
-import IMG27 from './assets/img27.jpg';
+import IMG27 from './assets/img27.JPG';
 
 
 const Galary_Globes = [
