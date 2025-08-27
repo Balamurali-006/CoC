@@ -4,10 +4,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Calendar, MapPin, Users, Mic, Palette, Wrench, Play, Camera, Star, Sparkles, Zap, Brain, Cpu } from 'lucide-react';
-import tharun from './assets/tharun.png';
-import shaz from './assets/shaz.jpg';
-import speak1 from './assets/Speak1.png';
-import speak2 from './assets/speak2.png';
+import tharun from '../assets/tharun.png';
+import shaz from '../assets/shaz.jpg';
+import speak1 from '../assets/Speak1.png';
+import speak2 from '../assets/speak2.png';
 
 const AIDay = ({ onNavigateBack }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });

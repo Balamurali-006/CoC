@@ -7,7 +7,7 @@ import Spline from '@splinetool/react-spline';
 import SplitText from './SplitText';
 import TargetCursor from "./TargetCursor";
 // Import your logo from assets folder
-import logo from '../components/assets/SaaS22.svg'; // Adjust the path based on your actual logo filename
+import logo from '../assets/SaaS22.svg'; // Adjust the path based on your actual logo filename
 
 const HeroSection = ({ onNavigateToAIDay }) => {
   const handleAnimationComplete = () => {

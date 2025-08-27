@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TargetCursor from "./TargetCursor";
 import { useNavigate } from "react-router-dom";
-import CIT from './assets/CIT.png';
+import CIT from '../assets/CIT.png';
 // import AI from './assets/AI.jpg'
 
 const Header = () => {

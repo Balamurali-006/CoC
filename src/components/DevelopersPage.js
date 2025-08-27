@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import dev1 from './assets/develop1.jpg'; 
-import dev2 from './assets/develop2.jpg';
+import dev1 from '../assets/develop1.jpg'; 
+import dev2 from '../assets/develop2.jpg';
 
 const DeveloperCard = ({ developer }) => {
   const [isHovered, setIsHovered] = useState(false);

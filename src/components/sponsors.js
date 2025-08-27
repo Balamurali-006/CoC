@@ -1,6 +1,6 @@
 import React from 'react';
 
-import saas_logo from './assets/SaaS22.svg';
+import saas_logo from '../assets/SaaS22.svg';
 
 const Sponsors = () => {
   // Your 3 sponsors
