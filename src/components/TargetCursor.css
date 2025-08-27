@@ -55,3 +55,10 @@
   border-right: none;
   border-top: none;
 }
+
+/* Hide cursor on small screens */
+@media (max-width: 768px) {
+  .target-cursor-wrapper {
+    display: none !important;
+  }
+}

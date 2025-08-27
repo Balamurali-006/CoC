@@ -11,6 +11,11 @@ const TargetCursor = ({
   const cornersRef = useRef(null);
   const spinTl = useRef(null);
   const dotRef = useRef(null);
+
+const isMobile = useMemo(() => {
+    return /Mobi|Android|iPhone|iPad|iPod|Tablet/i.test(navigator.userAgent);
+  }, []);
+
   const constants = useMemo(
     () => ({
       borderWidth: 3,
@@ -31,6 +36,8 @@ const TargetCursor = ({
   }, []);
 
   useEffect(() => {
+
+    if (isMobile) return; // 🚫 Skip setup on mobile
     if (!cursorRef.current) return;
 
     const originalCursor = document.body.style.cursor;
@@ -327,6 +334,7 @@ const TargetCursor = ({
         .to(cursorRef.current, { rotation: "+=360", duration: spinDuration, ease: "none" });
     }
   }, [spinDuration]);
+  if (isMobile) return null;
 
   return (
     <div ref={cursorRef} className="target-cursor-wrapper">
