@@ -122,6 +122,3 @@ export default ContactPage;
 
 
 
-// import dev1 from '../assets/develop1.jpg'; 
-// import dev2 from '../assets/develop2.jpg';
-// import React, { useState, useEffect } from 'react';

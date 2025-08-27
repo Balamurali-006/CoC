@@ -105,7 +105,7 @@ const DeveloperCard = ({ developer, index }) => {
         ...(isFlipped ? styles.cardFlipped : {})
       }}>
         {/* Enhanced animated logo circles */}
-        <div style={{
+        {/* <div style={{
           ...styles.logo,
           ...(isFlipped ? styles.logoHidden : {})
         }}>
@@ -129,7 +129,13 @@ const DeveloperCard = ({ developer, index }) => {
               </div>
             </div>
           </span>
-        </div>
+        </div> */}
+
+        {/* <img 
+                src={developer.image || '/api/placeholder/100/100'} 
+                alt={developer.name}
+                style={styles.avatar}
+              /> */}
 
         {/* Enhanced glass effect with gradient */}
         <div style={{
@@ -164,6 +170,8 @@ const DeveloperCard = ({ developer, index }) => {
                 <span key={i} style={styles.skillBadge}>{skill}</span>
               ))}
             </div>
+
+
           </div>
 
           {/* Enhanced social buttons and actions */}
@@ -247,14 +255,14 @@ const DeveloperCard = ({ developer, index }) => {
           </div>
         </div>
 
-        {/* Enhanced Card Back */}
+        {/* Simplified Card Back - Only image and social media */}
         <div style={{
           ...styles.cardFace,
           ...styles.cardBack,
           ...(isFlipped ? styles.cardBackFlipped : {})
         }}>
           <div style={styles.backContent}>
-            {/* Large Developer Image with enhanced effects */}
+            {/* Large Developer Image */}
             <div style={styles.backImageContainer}>
               <img 
                 src={developer.image || '/api/placeholder/150/150'} 
@@ -264,23 +272,7 @@ const DeveloperCard = ({ developer, index }) => {
               <div style={styles.imageGlow}></div>
             </div>
             
-            {/* Developer Info with animations */}
-            <div style={styles.backNameContainer}>
-              <h2 style={styles.backName}>{developer.name}</h2>
-              <p style={styles.backRole}>{developer.role}</p>
-              <div style={styles.backStats}>
-                <div style={styles.stat}>
-                  <span style={styles.statNumber}>5+</span>
-                  <span style={styles.statLabel}>Projects</span>
-                </div>
-                <div style={styles.stat}>
-                  <span style={styles.statNumber}>2+</span>
-                  <span style={styles.statLabel}>Years</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Enhanced Social Media Icons */}
+            {/* Social Media Icons Only */}
             <div style={styles.backSocialContainer}>
               {developer.instagram && (
                 <button 
@@ -331,7 +323,7 @@ const DeveloperCard = ({ developer, index }) => {
               )}
             </div>
 
-            {/* Enhanced Back Button */}
+            {/* Back Button */}
             <button 
               style={styles.flipBackButton}
               onClick={(e) => {
@@ -646,34 +638,35 @@ const styles = {
     opacity: 0,
   },
   content: {
-    padding: '120px 40px 0px 30px',
+    padding: '80px 40px 0px 30px',
     transform: 'translate3d(0, 0, 26px)',
-    height: 'calc(100% - 120px)',
+    height: 'calc(100% - 80px)',
   },
   titleContainer: {
-    marginBottom: '15px',
+    marginBottom: '20px',
   },
   title: {
     display: 'block',
     color: '#1f2937',
     fontWeight: '900',
-    fontSize: '24px',
-    lineHeight: '1.2',
-    textShadow: '1px 1px 2px rgba(255,255,255,0.3)',
+    fontSize: '28px',
+    lineHeight: '1.1',
+    textShadow: '2px 2px 4px rgba(255,255,255,0.5)',
+    letterSpacing: '-0.5px',
   },
   titleUnderline: {
-    width: '60px',
-    height: '3px',
+    width: '80px',
+    height: '4px',
     background: 'linear-gradient(90deg, #ec4899, #a855f7)',
-    marginTop: '8px',
+    marginTop: '12px',
     borderRadius: '2px',
   },
   text: {
     display: 'block',
     color: '#374151',
-    fontSize: '16px',
-    marginTop: '8px',
-    fontWeight: '600',
+    fontSize: '18px',
+    marginTop: '12px',
+    fontWeight: '700',
   },
   description: {
     display: 'block',
@@ -688,6 +681,7 @@ const styles = {
     flexWrap: 'wrap',
     gap: '8px',
     marginTop: '15px',
+    marginBottom: '15px',
   },
   skillBadge: {
     background: 'rgba(168, 85, 247, 0.2)',
@@ -697,6 +691,32 @@ const styles = {
     fontSize: '11px',
     fontWeight: '600',
     border: '1px solid rgba(168, 85, 247, 0.3)',
+  },
+  frontStatsContainer: {
+    marginTop: '15px',
+    marginBottom: '20px',
+  },
+  frontStats: {
+    display: 'flex',
+    gap: '25px',
+    justifyContent: 'flex-start',
+  },
+  frontStat: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  frontStatNumber: {
+    fontSize: '20px',
+    fontWeight: '900',
+    color: '#a855f7',
+    lineHeight: '1',
+  },
+  frontStatLabel: {
+    fontSize: '11px',
+    color: '#6b7280',
+    fontWeight: '600',
+    marginTop: '2px',
   },
   bottom: {
     padding: '15px 20px',
@@ -906,7 +926,7 @@ const styles = {
     transform: 'rotateY(0deg)',
   },
   backContent: {
-    padding: '25px',
+    padding: '40px 25px',
     textAlign: 'center',
     color: '#1f2937',
     height: '100%',
@@ -914,7 +934,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '25px',
+    gap: '30px',
     background: `
       rgba(255, 255, 255, 0.15),
       linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%)
@@ -926,18 +946,14 @@ const styles = {
     boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.3)',
   },
   backImageContainer: {
-    width: '160px',
-    height: '160px',
+    width: '200px',
+    height: '200px',
     borderRadius: '50%',
     overflow: 'hidden',
     border: '4px solid white',
     boxShadow: '0 25px 50px rgba(168, 85, 247, 0.4)',
     transition: 'all 0.5s ease',
     position: 'relative',
-  },
-  backImageContainerHovered: {
-    transform: 'scale(1.05) rotateY(15deg)',
-    boxShadow: '0 30px 60px rgba(236, 72, 153, 0.5)',
   },
   backImage: {
     width: '100%',
@@ -957,56 +973,16 @@ const styles = {
     zIndex: -1,
     filter: 'blur(8px)',
   },
-  backNameContainer: {
-    textAlign: 'center',
-    margin: '15px 0',
-  },
-  backName: {
-    fontSize: '28px',
-    fontWeight: '900',
-    color: '#1f2937',
-    margin: '0 0 8px 0',
-    textShadow: '2px 2px 4px rgba(255,255,255,0.5)',
-    letterSpacing: '-0.5px',
-  },
-  backRole: {
-    fontSize: '16px',
-    color: '#374151',
-    margin: '0 0 15px 0',
-    fontWeight: '600',
-  },
-  backStats: {
-    display: 'flex',
-    gap: '30px',
-    justifyContent: 'center',
-  },
-  stat: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  statNumber: {
-    fontSize: '24px',
-    fontWeight: '900',
-    color: '#a855f7',
-    lineHeight: '1',
-  },
-  statLabel: {
-    fontSize: '12px',
-    color: '#6b7280',
-    fontWeight: '600',
-    marginTop: '4px',
-  },
   backSocialContainer: {
     display: 'flex',
-    gap: '20px',
+    gap: '25px',
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
   },
   backSocialButton: {
-    width: '65px',
-    height: '65px',
+    width: '70px',
+    height: '70px',
     borderRadius: '50%',
     border: '3px solid white',
     background: 'rgba(255, 255, 255, 0.95)',
@@ -1015,14 +991,14 @@ const styles = {
     justifyContent: 'center',
     cursor: 'pointer',
     transition: 'all 0.4s ease',
-    boxShadow: '0 10px 25px rgba(236, 72, 153, 0.3)',
+    boxShadow: '0 15px 35px rgba(236, 72, 153, 0.4)',
     backdropFilter: 'blur(10px)',
     position: 'relative',
     overflow: 'hidden',
   },
   backSocialSvg: {
-    width: '30px',
-    height: '30px',
+    width: '35px',
+    height: '35px',
     fill: '#000000',
     transition: 'all 0.3s ease',
     zIndex: 1,
@@ -1039,7 +1015,6 @@ const styles = {
     transition: 'all 0.4s ease',
     backdropFilter: 'blur(15px)',
     boxShadow: '0 10px 25px rgba(168, 85, 247, 0.3)',
-    marginTop: '10px',
     position: 'relative',
     overflow: 'hidden',
   },
@@ -1066,6 +1041,13 @@ const styles = {
     transition: 'all 0.3s ease',
     cursor: 'pointer',
   },
-};
+  statNumber: {
+    fontSize: '2.5rem',
+    fontWeight: '900',
+    color: 'white',
+    display: 'block',
+    marginBottom: '8px',
+  },
+  };
 
 export default DevelopersPage;

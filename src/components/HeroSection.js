@@ -30,19 +30,6 @@ const HeroSection = ({ onNavigateToAIDay }) => {
         </div>
       </div>
 
-      {/* Marathon Coding Badge - Floating Top Left */}
-      {/* <div className="absolute top-32 left-8 z-20 hidden md:block">
-        <div className="group relative cursor-target">
-          <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg blur opacity-60 animate-pulse"></div>
-          <div className="relative bg-black border border-green-400/40 rounded-lg px-4 py-2 backdrop-blur-sm transform hover:scale-110 transition-all duration-300 shadow-lg shadow-green-500/20">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">⚡</span>
-              <div className="text-green-400 text-sm font-bold tracking-wide">MARATHON CODING</div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
       {/* Hero Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl">
         {/* Company Logo */}
