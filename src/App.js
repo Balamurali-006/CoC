@@ -18,19 +18,23 @@ import CodeOClockLoader from './components/CodeOClockLoader';
 import TeamSection from './components/TeamSection';
 import ContactPage from './components/ContactPage';
 import AIDay from './components/AIDay';
+import CodeAura from './components/CodeAura';
 import "./App.css";
 import Sponsors from './components/sponsors';
 
 // --------------------
 // Main App Content Component (Homepage)
 // --------------------
-const MainAppContent = ({ onNavigateToDevelopers, onNavigateToAIDay }) => {
+const MainAppContent = ({ onNavigateToDevelopers, onNavigateToAIDay, onNavigateToCodeAura }) => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Header />
       
       <section id="home">
-        <HeroSection onNavigateToAIDay={onNavigateToAIDay} />
+        <HeroSection 
+          onNavigateToAIDay={onNavigateToAIDay}
+          onNavigateToCodeAura={onNavigateToCodeAura}
+        />
       </section>
 
       <section id="count">
@@ -110,7 +114,15 @@ const AppContent = () => {
     navigate("/ai-day");
   };
 
+  const navigateToCodeAura = () => {
+    navigate("/code-aura");
+  };
+
   const navigateBackFromAIDay = () => {
+    navigate("/");
+  };
+
+  const navigateBackFromCodeAura = () => {
     navigate("/");
   };
 
@@ -122,6 +134,7 @@ const AppContent = () => {
           <MainAppContent 
             onNavigateToDevelopers={navigateToDevelopers}
             onNavigateToAIDay={navigateToAIDay}
+            onNavigateToCodeAura={navigateToCodeAura}
           />
         }
       />
@@ -136,6 +149,10 @@ const AppContent = () => {
       <Route
         path="/ai-day"
         element={<AIDay onNavigateBack={navigateBackFromAIDay} />}
+      />
+      <Route
+        path="/code-aura"
+        element={<CodeAura onNavigateBack={navigateBackFromCodeAura} />}
       />
       <Route
         path="/header"

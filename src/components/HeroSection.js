@@ -9,7 +9,7 @@ import TargetCursor from "./TargetCursor";
 // Import your logo from assets folder
 import logo from '../assets/SaaS22.svg'; // Adjust the path based on your actual logo filename
 
-const HeroSection = ({ onNavigateToAIDay }) => {
+const HeroSection = ({ onNavigateToAIDay, onNavigateToCodeAura }) => {
   const handleAnimationComplete = () => {
     console.log('All letters have animated!');
   };
@@ -25,6 +25,20 @@ const HeroSection = ({ onNavigateToAIDay }) => {
               <div className="text-orange-400 text-xs font-bold tracking-widest mb-1">NON-STOP</div>
               <div className="text-white font-black text-2xl leading-none" style={{ fontFamily: "'orbitron', monospace" }}>24</div>
               <div className="text-orange-400 text-xs font-bold tracking-widest">HOURS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CodeAura Contest Spotlight Banner - Floating Top Left */}
+      <div className="absolute top-32 left-8 z-20 hidden lg:block">
+        <div className="group relative cursor-target animate-bounce" style={{animationDuration: '3s'}}>
+          <div className="absolute -inset-3 bg-gradient-to-r from-violet-500 via-purple-500 via-pink-500 to-red-500 rounded-2xl blur-xl opacity-75 animate-pulse"></div>
+          <div className="relative bg-black border-2 border-gradient-to-r from-violet-400 to-pink-400 rounded-2xl px-4 py-3 backdrop-blur-sm transform hover:scale-110 transition-all duration-500 shadow-2xl shadow-purple-500/50">
+            <div className="text-center">
+              <div className="text-violet-300 text-xs font-bold tracking-widest mb-1 animate-pulse">🔥 HOT CONTEST 🔥</div>
+              <div className="text-white font-black text-lg leading-none bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent" style={{ fontFamily: "'orbitron', monospace" }}>CodeAura</div>
+              <div className="text-pink-400 text-xs font-bold tracking-widest animate-pulse">JOIN NOW!</div>
             </div>
           </div>
         </div>
@@ -96,6 +110,18 @@ const HeroSection = ({ onNavigateToAIDay }) => {
           </div>
         </div>
         
+        {/* CodeAura Contest Banner - Mobile */}
+        <div className="lg:hidden mb-6">
+          <div className="inline-block relative cursor-target animate-pulse">
+            <div className="absolute -inset-2 bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 rounded-xl blur opacity-75"></div>
+            <div className="relative bg-black border border-violet-400/40 rounded-xl px-6 py-3 backdrop-blur-sm">
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-violet-400 font-bold text-sm">🔥 CodeAura Contest</span>
+                <span className="text-pink-400 font-bold text-sm">- JOIN NOW! 🔥</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Animated Subheading */}
         <SplitText
@@ -169,7 +195,7 @@ const HeroSection = ({ onNavigateToAIDay }) => {
           </div>
         </div>
 
-        {/* Challenge Intensity Indicator - NEW */}
+        {/* Challenge Intensity Indicator */}
         <div className="mb-8">
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/80 to-black/80 border border-gray-600/30 rounded-full backdrop-blur-sm">
             <div className="flex gap-1">
@@ -189,6 +215,18 @@ const HeroSection = ({ onNavigateToAIDay }) => {
         {/* Buttons */}
         <TargetCursor spinDuration={2} hideDefaultCursor={true} />
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+          {/* CodeAura Contest Button */}
+          <button 
+            onClick={onNavigateToCodeAura}
+            className="cursor-target px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 border border-purple-400/30 rounded-lg font-semibold text-white"
+          >
+            <span className="flex items-center space-x-2">
+              <span>🏆</span>
+              <span>CODEAURA</span>
+              <span>🚀</span>
+            </span>
+          </button>  
+          
           {/* Register Button */}
           <button className="cursor-target group relative px-10 py-4 bg-black border rounded-lg font-semibold text-white transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25">
             <span className="relative z-10 flex items-center space-x-2">
@@ -199,6 +237,8 @@ const HeroSection = ({ onNavigateToAIDay }) => {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
+
+          
 
           {/* AI Day Button */}
           <button 
@@ -220,6 +260,16 @@ const HeroSection = ({ onNavigateToAIDay }) => {
       <div className="hidden md:flex relative bottom-0 h-[600px] w-[600px]">
         <Spline scene="https://prod.spline.design/AGqE2KBLcy76azr4/scene.splinecode" />
       </div>
+
+      <style jsx>{`
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 4s linear infinite;
+        }
+      `}</style>
     </section>
   );
 };
