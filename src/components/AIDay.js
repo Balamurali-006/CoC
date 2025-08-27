@@ -1,7 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import { ArrowLeft, Calendar, MapPin, Users, Mic, Palette, Wrench, Play, Camera, Star, Sparkles, Zap, Brain, Cpu } from 'lucide-react';
-
-
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Calendar, MapPin, Users, Mic, Palette, Wrench, Play, Camera, Star, Sparkles, Zap, Brain, Cpu } from 'lucide-react';
 import tharun from '../assets/tharun.png';
@@ -51,13 +47,13 @@ const AIDay = ({ onNavigateBack }) => {
       name: "Sankar Raj", 
       role: "Speaker", 
       linkedin: "https://www.linkedin.com/in/sankarrajj/",
-      bio: "Global Cybercrime Investigator,Ethical Hacker,Cybersecurity Influencer,Trainer ",
-      expertise: "International Cybersecurity speaker, trainer & Cybercrime Investigor",
+      bio: "Global Cybercrime Investigator, Ethical Hacker, Cybersecurity Influencer, Trainer",
+      expertise: "International Cybersecurity speaker, trainer & Cybercrime Investigator",
       image: speak2
     },
     { 
       name: "Lenin", 
-      role: "Speaker 3", 
+      role: "Speaker", 
       bio: "Tech Evangelist & ML Engineer",
       expertise: "Natural Language Processing",
       image: "/api/placeholder/200/200"
@@ -70,14 +66,14 @@ const AIDay = ({ onNavigateBack }) => {
       role: "Event Coordinator", 
       specialty: "Event Management",
       image: shaz,
-      phone : "7604973171"
+      phone: "7604973171"
     },
     { 
       name: "Tharun", 
       role: "Event Coordinator", 
       specialty: "Technical Operations",
       image: tharun,
-      phone : "6380795514"
+      phone: "6380795514"
     }
   ];
 
@@ -184,13 +180,18 @@ const AIDay = ({ onNavigateBack }) => {
 
           {/* Enhanced Register Button */}
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <button className="group relative px-10 py-5 bg-gradient-to-r from-pink-800 via-purple-700 to-purple-600 hover:from-pink-700 hover:via-purple-600 hover:to-purple-500 text-white font-bold rounded-full text-lg transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-purple-800/40 transform">
+            <a 
+              href='https://docs.google.com/forms/d/e/1FAIpQLSerna85ILtdONt51E0CwrzAbm0l1fVgNuDwzhnaVGxauyzQQw/viewform'
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative px-10 py-5 bg-gradient-to-r from-pink-800 via-purple-700 to-purple-600 hover:from-pink-700 hover:via-purple-600 hover:to-purple-500 text-white font-bold rounded-full text-lg transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-purple-800/40 transform inline-flex items-center gap-3"
+            >
               <span className="relative z-10 flex items-center gap-3">
                 <Zap size={20} />
                 Register for AI Day
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-500 to-purple-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl scale-110"></div>
-            </button>
+            </a>
           </div>
         </div>
       </header>
@@ -281,7 +282,7 @@ const AIDay = ({ onNavigateBack }) => {
         </div>
       </section>
 
-      {/* Coordinators Section */}
+      {/* Coordinators Section with Flip Cards */}
       <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-20 bg-gradient-to-r from-pink-800 via-purple-700 to-purple-600 bg-clip-text text-transparent">
@@ -289,36 +290,108 @@ const AIDay = ({ onNavigateBack }) => {
           </h2>
           
           <div className="flex flex-col sm:flex-row justify-center gap-8 max-w-4xl mx-auto">
-            {coordinators.map((coordinator, index) => (
-              <div key={index} className="group flex-1 max-w-sm mx-auto">
-                <div className="relative bg-gradient-to-br from-pink-800/15 to-purple-900/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-700/40 hover:border-pink-600/70 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-purple-800/35 text-center cursor-pointer">
-                  
-                  <div className="relative z-10">
-                    {/* Image Container */}
-                    <div className="relative mb-6">
-                      <div className="relative w-20 h-20 mx-auto">
-                        <img 
-                          src={coordinator.image} 
-                          alt={coordinator.name}
-                          className="w-full h-full object-cover rounded-full border-3 border-purple-700/60 group-hover:border-pink-600/80 group-hover:scale-110 transition-all duration-500 shadow-lg"
-                        />
-                        <div className="absolute -inset-2 bg-gradient-to-r from-pink-800/50 to-purple-700/50 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {coordinators.map((coordinator, index) => {
+              const [isFlipped, setIsFlipped] = useState(false);
+              
+              return (
+                <div key={index} className="flex-1 max-w-sm mx-auto" style={{perspective: '1000px'}}>
+                  {/* Flip Container */}
+                  <div 
+                    className="relative w-full h-80 cursor-pointer transition-transform duration-700"
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                    }}
+                    onMouseEnter={() => setIsFlipped(true)}
+                    onMouseLeave={() => setIsFlipped(false)}
+                  >
+                    
+                    {/* Front Side */}
+                    <div className="absolute inset-0 w-full h-full" style={{backfaceVisibility: 'hidden'}}>
+                      <div className="relative bg-gradient-to-br from-pink-800/20 to-purple-900/30 backdrop-blur-sm rounded-2xl p-8 border border-purple-700/50 h-full flex flex-col justify-center items-center text-center shadow-xl hover:shadow-2xl hover:shadow-purple-800/40 transition-all duration-500">
+                        
+                        {/* Decorative Icon/Avatar Placeholder */}
+                        <div className="relative mb-6">
+                          <div className="w-16 h-16 mx-auto bg-gradient-to-br from-pink-700/30 to-purple-600/40 rounded-full flex items-center justify-center border-2 border-purple-600/60 shadow-lg">
+                            <svg className="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                          </div>
+                          <div className="absolute -inset-3 bg-gradient-to-r from-pink-800/30 to-purple-700/30 rounded-full blur-lg opacity-60 animate-pulse"></div>
+                        </div>
+                        
+                        <h3 className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-500 bg-clip-text text-transparent mb-3">
+                          {coordinator.name}
+                        </h3>
+                        <p className="text-purple-300 font-semibold mb-2 text-lg">{coordinator.role}</p>
+                        <p className="text-pink-300 font-medium mb-4">{coordinator.specialty}</p>
+                        <p className="text-purple-200 font-medium text-sm bg-gradient-to-r from-purple-800/20 to-pink-800/20 px-4 py-2 rounded-full border border-purple-600/30">
+                          {coordinator.phone}
+                        </p>
+                        
+                        {/* Flip Indicator */}
+                        <div className={`absolute bottom-4 right-4 transition-colors duration-300 ${isFlipped ? 'text-pink-400/80' : 'text-purple-400/60'}`}>
+                          <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                          </svg>
+                        </div>
+                        
+                        {/* Gradient Overlay */}
+                        <div className={`absolute -inset-1 rounded-2xl transition-all duration-500 -z-10 ${isFlipped ? 'bg-gradient-to-r from-pink-800/10 to-purple-700/10' : 'bg-gradient-to-r from-pink-800/0 to-purple-700/0'}`}></div>
                       </div>
                     </div>
                     
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-pink-700 to-purple-600 bg-clip-text text-transparent mb-2">
-                      {coordinator.name}
-                    </h3>
-                    <p className="text-purple-400 font-medium mb-1">{coordinator.role}</p>
-                    <p className="text-pink-300 font-medium text-sm">{coordinator.specialty}</p>
-                    <p className="text-from-pink-700 to-purple-600 font-medium text-md"> PHNO  : {coordinator.phone}</p>
+                    {/* Back Side */}
+                    <div className="absolute inset-0 w-full h-full" style={{backfaceVisibility: 'hidden', transform: 'rotateY(180deg)'}}>
+                      <div className="relative bg-gradient-to-br from-purple-900/40 to-pink-800/30 backdrop-blur-md rounded-2xl border border-pink-600/50 h-full overflow-hidden shadow-2xl shadow-pink-800/50">
+                        
+                        {/* Background Image with Overlay */}
+                        <div className="absolute inset-0">
+                          <img 
+                            src={coordinator.image} 
+                            alt={coordinator.name}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-800/40 to-transparent"></div>
+                          <div className="absolute inset-0 bg-gradient-to-br from-pink-800/20 to-purple-900/30"></div>
+                        </div>
+                        
+                        {/* Content Overlay */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
+                          <div className="bg-black/30 backdrop-blur-sm rounded-xl p-4 border border-purple-500/30">
+                            <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+                              {coordinator.name}
+                            </h3>
+                            <p className="text-purple-200 font-semibold mb-1">{coordinator.role}</p>
+                            <p className="text-pink-200 text-sm font-medium">{coordinator.specialty}</p>
+                            
+                            {/* Contact Button */}
+                            <a 
+                              href={`tel:${coordinator.phone}`}
+                              className="mt-4 inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-600/80 to-purple-600/80 rounded-full text-white font-medium text-sm hover:from-pink-500 hover:to-purple-500 transition-all duration-300 border border-white/20"
+                            >
+                              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                              </svg>
+                              {coordinator.phone}
+                            </a>
+                          </div>
+                        </div>
+                        
+                        {/* Decorative Elements */}
+                        <div className="absolute top-4 right-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-full flex items-center justify-center border border-white/20 backdrop-blur-sm">
+                            <svg className="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  
-                  {/* Subtle hover glow */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-pink-800/0 to-purple-700/0 group-hover:from-pink-800/20 group-hover:to-purple-700/20 rounded-2xl transition-all duration-500 -z-10"></div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -333,14 +406,19 @@ const AIDay = ({ onNavigateBack }) => {
             Join us for an unforgettable journey into the world of artificial intelligence. 
             Network with experts, explore cutting-edge technology, and shape the future.
           </p>
-          <button className="group relative px-12 py-6 bg-gradient-to-r from-pink-800 via-purple-700 to-purple-600 hover:from-pink-700 hover:via-purple-600 hover:to-purple-500 text-white font-bold rounded-full text-xl transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-purple-800/40 transform">
+          <a 
+            href='https://docs.google.com/forms/d/e/1FAIpQLSerna85ILtdONt51E0CwrzAbm0l1fVgNuDwzhnaVGxauyzQQw/viewform'
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-12 py-6 bg-gradient-to-r from-pink-800 via-purple-700 to-purple-600 hover:from-pink-700 hover:via-purple-600 hover:to-purple-500 text-white font-bold rounded-full text-xl transition-all duration-500 hover:scale-110 hover:shadow-2xl hover:shadow-purple-800/40 transform inline-flex items-center gap-3"
+          >
             <span className="relative z-10 flex items-center gap-3">
               <Brain size={24} />
               Join the Revolution
               <Sparkles size={24} />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-500 to-purple-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl scale-110"></div>
-          </button>
+          </a>
         </div>
       </section>
 
