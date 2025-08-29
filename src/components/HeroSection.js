@@ -7,7 +7,7 @@ import Spline from '@splinetool/react-spline';
 import SplitText from './SplitText';
 import TargetCursor from "./TargetCursor";
 // Import your logo from assets folder
-import logo from '../assets/SaaS22.svg'; // Adjust the path based on your actual logo filename
+import logo from '../assets/SaaS22 (2).png'; // Adjust the path based on your actual logo filename
 
 const HeroSection = ({ onNavigateToAIDay, onNavigateToCodeAura }) => {
   const handleAnimationComplete = () => {
@@ -30,18 +30,22 @@ const HeroSection = ({ onNavigateToAIDay, onNavigateToCodeAura }) => {
         </div>
       </div>
 
-      {/* CodeAura Contest Spotlight Banner - Floating Top Left */}
+      {/* CodeAura Contest Spotlight Banner - Floating Top Left - NOW CLICKABLE */}
       <div className="absolute top-32 left-8 z-20 hidden lg:block">
-        <div className="group relative cursor-target animate-bounce" style={{animationDuration: '3s'}}>
-          <div className="absolute -inset-3 bg-gradient-to-r from-violet-500 via-purple-500 via-pink-500 to-red-500 rounded-2xl blur-xl opacity-75 animate-pulse"></div>
-          <div className="relative bg-black border-2 border-gradient-to-r from-violet-400 to-pink-400 rounded-2xl px-4 py-3 backdrop-blur-sm transform hover:scale-110 transition-all duration-500 shadow-2xl shadow-purple-500/50">
+        <button 
+          onClick={onNavigateToCodeAura}
+          className="group relative cursor-target animate-bounce transform hover:scale-110 transition-all duration-500 focus:outline-none focus:ring-4 focus:ring-purple-500/50"
+          style={{animationDuration: '3s'}}
+        >
+          <div className="absolute -inset-3 bg-gradient-to-r from-violet-500 via-purple-500 via-pink-500 to-red-500 rounded-2xl blur-xl opacity-75 animate-pulse group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative bg-black border-2 border-gradient-to-r from-violet-400 to-pink-400 rounded-2xl px-4 py-3 backdrop-blur-sm shadow-2xl shadow-purple-500/50">
             <div className="text-center">
               <div className="text-violet-300 text-xs font-bold tracking-widest mb-1 animate-pulse">🔥 HOT CONTEST 🔥</div>
               <div className="text-white font-black text-lg leading-none bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent" style={{ fontFamily: "'orbitron', monospace" }}>CodeAura</div>
               <div className="text-pink-400 text-xs font-bold tracking-widest animate-pulse">JOIN NOW!</div>
             </div>
           </div>
-        </div>
+        </button>
       </div>
 
       {/* Hero Content */}
@@ -110,17 +114,20 @@ const HeroSection = ({ onNavigateToAIDay, onNavigateToCodeAura }) => {
           </div>
         </div>
         
-        {/* CodeAura Contest Banner - Mobile */}
+        {/* CodeAura Contest Banner - Mobile - NOW CLICKABLE */}
         <div className="lg:hidden mb-6">
-          <div className="inline-block relative cursor-target animate-pulse">
-            <div className="absolute -inset-2 bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 rounded-xl blur opacity-75"></div>
+          <button 
+            onClick={onNavigateToCodeAura}
+            className="inline-block relative cursor-target animate-pulse transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-500/50"
+          >
+            <div className="absolute -inset-2 bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="relative bg-black border border-violet-400/40 rounded-xl px-6 py-3 backdrop-blur-sm">
               <div className="flex items-center justify-center gap-2">
                 <span className="text-violet-400 font-bold text-sm">🔥 CodeAura Contest</span>
                 <span className="text-pink-400 font-bold text-sm">- JOIN NOW! 🔥</span>
               </div>
             </div>
-          </div>
+          </button>
         </div>
 
         {/* Animated Subheading */}

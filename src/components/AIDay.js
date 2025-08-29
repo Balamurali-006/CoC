@@ -4,6 +4,7 @@ import shaz from '../assets/shaz.jpg';
 import tharun from '../assets/tharun.png';
 import speak1 from '../assets/Speak1.png';
 import speak2 from '../assets/speak2.png';
+import speak3 from '../assets/speak3.png';
 
 // Desktop Flip Card Component
 const CoordinatorFlipCard = ({ coordinator }) => {
@@ -148,22 +149,31 @@ const AIDay = ({ onNavigateBack }) => {
   ];
 
   const speakers = [
-    { 
-      name: "Dinesh Kumar", 
-      role: "Speaker", 
-      linkedin: "https://www.linkedin.com/in/dinesh-kumar-prabakaran/",
-      bio: "Community Builder for AI & Product Thinking in Coimbatore",
-      expertise: "Product Manager with 12+ years specialized in Modern data stack, and cloud technologies.",
-      image: speak1
-    },
-    { 
-      name: "Sankar Raj", 
-      role: "Speaker", 
-      linkedin: "https://www.linkedin.com/in/sankarrajj/",
-      bio: "Global Cybercrime Investigator, Ethical Hacker, Cybersecurity Influencer, Trainer",
-      expertise: "International Cybersecurity speaker, trainer & Cybercrime Investigator",
-      image: speak2
-    }
+{ 
+  name: "Dinesh Kumar", 
+  role: "Speaker", 
+  linkedin: "https://www.linkedin.com/in/dinesh-kumar-prabakaran/",
+  bio: "Community Builder for AI & Product Thinking in Coimbatore",
+  expertise: "Product Manager with 12+ years in data stack, analytics, and cloud technologies.",
+  image: speak1
+},
+{ 
+  name: "Sankar Raj", 
+  role: "Speaker", 
+  linkedin: "https://www.linkedin.com/in/sankarrajj/",
+  bio: "Global Cybercrime Investigator, Ethical Hacker, Trainer",
+  expertise: "International cybersecurity speaker and experienced global cybercrime investigator.",
+  image: speak2
+},
+{ 
+  name: "Raja CSP Raman", 
+  role: "Speaker", 
+  linkedin: "https://www.linkedin.com/in/raja-csp-raman/",
+  bio: "Co-Founder and CTO, Startup Advisor",
+  expertise: "Machine learning researcher and mentor focused on GenAI, open-source projects, and MLOps innovation.",
+  image: speak3
+}
+
   ];
 
   const coordinators = [

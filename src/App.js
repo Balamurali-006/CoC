@@ -19,6 +19,7 @@ import TeamSection from './components/TeamSection';
 import ContactPage from './components/ContactPage';
 import AIDay from './components/AIDay';
 import CodeAura from './components/CodeAura';
+import AcknowledgementSection from './components/FeedbackSection';
 import "./App.css";
 import Sponsors from './components/sponsors';
 
@@ -64,6 +65,10 @@ const MainAppContent = ({ onNavigateToDevelopers, onNavigateToAIDay, onNavigateT
       <section id="galary">
         <Galary/>
       </section>
+
+      <section id="acknowledgement">
+        <AcknowledgementSection/>
+      </section>
       
       <Footer onNavigateToDevelopers={onNavigateToDevelopers} />
       
