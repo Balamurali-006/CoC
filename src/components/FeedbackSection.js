@@ -8,38 +8,32 @@ const AcknowledgementSection = () => {
   const feedbacks = [
     {
       id: 1,
-      name: "Sarah Chen",
-      role: "Computer Science Student",
+      name: "PARTCIPANT",
       feedback: "COC 2024 was an incredible experience! The mentorship and collaborative environment helped me push my coding skills to new heights. Can't wait for the next one!"
     },
     {
       id: 2,
-      name: "Alex Rodriguez",
-      role: "Full Stack Developer",
+     name: "PARTCIPANT",
       feedback: "The hackathon brought together brilliant minds from different backgrounds. The 24-hour challenge was intense but incredibly rewarding. Made lifelong connections!"
     },
     {
       id: 3,
-      name: "Priya Patel",
-      role: "AI/ML Enthusiast",
+      name: "PARTCIPANT",
       feedback: "COC 2024 provided the perfect platform to showcase innovative ideas. The judges were supportive, and the networking opportunities were amazing. Definitely participating again!"
     },
     {
       id: 4,
-      name: "Marcus Johnson",
-      role: "Mobile App Developer",
+      name: "PARTCIPANT",
       feedback: "From ideation to implementation, COC 2024 was perfectly organized. The workshops were insightful and the competitive spirit brought out the best in everyone."
     },
     {
       id: 5,
-      name: "Emma Thompson",
-      role: "UX Designer",
+    name: "PARTCIPANT",
       feedback: "The diversity of projects and the collaborative atmosphere made COC 2024 unforgettable. Great platform for learning new technologies and meeting like-minded individuals."
     },
     {
       id: 6,
-      name: "Arjun Sharma",
-      role: "Data Scientist",
+    name: "PARTCIPANT",
       feedback: "COC 2024 exceeded all expectations! The mentors were incredibly knowledgeable, and the problem statements were challenging yet achievable. Outstanding event overall."
     }
   ];

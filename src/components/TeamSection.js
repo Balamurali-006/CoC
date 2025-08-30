@@ -29,15 +29,7 @@ const TeamSection = () => {
       </div>
 
       {/* Right side - Spline Component */}
-      <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-        <div className="relative w-64 h-64 bg-gradient-to-tr from-pink-400 to-purple-500 rounded-full animate-float shadow-2xl overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center">
-            
-          </div>
-          {/* Hide Spline watermark */}
-          
-        </div>
-      </div>
+      
 
       {/* Custom animation styles */}
       <style jsx>{`

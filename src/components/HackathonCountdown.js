@@ -113,7 +113,7 @@ const HackathonCountdown = () => {
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-6xl font-black mb-6 bg-gradient-to-r from-pink-400 via-purple-400 to-pink-600 bg-clip-text text-transparent drop-shadow-2xl">
-            COUNTDOWN
+            &lt;/COUNTDOWN&gt;
           </h1>
 
           <div className="space-y-2 font-mono">

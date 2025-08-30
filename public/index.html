@@ -84,6 +84,119 @@
       }
     }
     </script>
+
+    <!-- Chatbot Glow Enhancement Styles -->
+    <style>
+        /* Chatbot Glow Enhancement Styles */
+        
+        /* Main chatbot container glow effect */
+        [id*="chatbase"], 
+        .chatbase-widget,
+        iframe[src*="chatbase"] {
+            position: relative !important;
+            z-index: 9999 !important;
+        }
+        
+        /* Glowing border animation for chatbot */
+        [id*="chatbase"]::before,
+        .chatbase-widget::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8);
+            background-size: 400% 400%;
+            border-radius: 50%;
+            z-index: -1;
+            animation: chatbotGlow 3s ease-in-out infinite, gradientShift 4s ease-in-out infinite;
+            filter: blur(8px);
+            opacity: 0.8;
+        }
+        
+        /* Pulsing animation */
+        @keyframes chatbotGlow {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+        
+        /* Gradient color shift */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Emergency chatbot button for accessibility */
+        .emergency-chatbot-btn {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            background: linear-gradient(135deg, #ff4757 0%, #ff3838 100%);
+            color: white;
+            padding: 12px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 15px 0 0 15px;
+            z-index: 10002;
+            cursor: pointer;
+            box-shadow: -4px 0 15px rgba(255, 71, 87, 0.3);
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            border: 2px solid #fff;
+            animation: emergency-pulse 3s ease-in-out infinite;
+        }
+        
+        .emergency-chatbot-btn:hover {
+            transform: translateY(-50%) translateX(-5px);
+            box-shadow: -8px 0 25px rgba(255, 71, 87, 0.5);
+        }
+        
+        @keyframes emergency-pulse {
+            0%, 100% { 
+                box-shadow: -4px 0 15px rgba(255, 71, 87, 0.3);
+            }
+            50% { 
+                box-shadow: -4px 0 25px rgba(255, 71, 87, 0.6);
+            }
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .emergency-chatbot-btn {
+                top: 40%;
+                padding: 8px 6px;
+                font-size: 9px;
+            }
+        }
+        
+        /* Ensure chatbot is always visible and clickable */
+        [id*="chatbase"],
+        .chatbase-widget {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            z-index: 9999 !important;
+            pointer-events: auto !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* Fade animations */
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0px); }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+    </style>
   </head>
 
   <body>
@@ -98,8 +211,14 @@
     <!-- React Root -->
     <div id="root"></div>
 
+    <!-- Emergency chatbot access button -->
+    <div class="emergency-chatbot-btn" id="emergency-chatbot" onclick="redirectToChatbot()" title="Can't see the chatbot? Click here!">
+        🆘 Chat Support
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Remove loading screen when page is fully loaded -->
     <script>
       window.addEventListener('load', function() {
@@ -115,6 +234,16 @@
       });
     </script>
 
+    <!-- Emergency Chat Support Script -->
+    <script>
+        // Direct redirect function for emergency chat support
+        function redirectToChatbot() {
+            console.log('🔗 Opening emergency chat support...');
+            const chatbotUrl = 'https://www.chatbase.co/chatbot-iframe/CihBUgGeRv7aTJdX8PxIO';
+            window.open(chatbotUrl, '_blank', 'width=400,height=600,scrollbars=yes,resizable=yes');
+        }
+    </script>
+
     <!-- Google Analytics (Replace with your tracking ID) -->
     <!-- 
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
@@ -125,5 +254,6 @@
       gtag('config', 'GA_TRACKING_ID');
     </script>
     -->
+
   </body>
 </html>
