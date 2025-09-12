@@ -22,14 +22,89 @@ const TeamSection = () => {
         {/* Contact Us Button */}
         <button
           onClick={() => navigate("/contact")}
-          className="cursor-target px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-lg hover:scale-110 transition-transform animate-pulse-glow"
+          className="cursor-target px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-lg hover:scale-110 transition-transform animate-pulse-glow text-white font-semibold"
         >
           Contact Us
         </button>
       </div>
 
-      {/* Right side - Spline Component */}
-      
+      {/* Right side - Inspirational Quote Section */}
+      <div className="md:w-1/2 flex items-center justify-center mt-8 md:mt-0">
+        <div className="relative w-full max-w-lg">
+          
+          {/* Quote Container */}
+          <div className="relative bg-gradient-to-br from-purple-800/30 to-pink-800/30 backdrop-blur-sm rounded-3xl p-8 border border-purple-400/20 hover:border-pink-400/40 transition-all duration-700 animate-float">
+            
+            {/* Floating Particles */}
+            <div className="absolute -top-2 -left-2 w-4 h-4 bg-pink-400 rounded-full animate-ping"></div>
+            <div className="absolute -top-2 -right-2 w-3 h-3 bg-purple-400 rounded-full animate-ping delay-300"></div>
+            <div className="absolute -bottom-2 -right-2 w-3 h-3 bg-purple-300 rounded-full animate-ping delay-1000"></div>
+            
+            {/* Quote Mark Icon */}
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full mb-4 animate-pulse-glow">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-10zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">Our Philosophy</h3>
+            </div>
+            
+            {/* Main Quote */}
+            <div className="text-center mb-8">
+              <blockquote className="text-xl font-medium text-white leading-relaxed mb-4 italic">
+                "We are not just coordinators, we are dream weavers, future architects, and catalysts of change. Every project we touch, every student we guide, becomes a stepping stone to innovation."
+              </blockquote>
+              
+              {/* Quote Attribution */}
+              <div className="flex items-center justify-center space-x-2">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-pink-400 to-purple-400"></div>
+                <p className="text-pink-300 font-semibold text-sm">Association Members</p>
+                <div className="w-8 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400"></div>
+              </div>
+            </div>
+            
+            {/* Core Values */}
+            {/* <div className="space-y-4">
+              <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-xl p-3 hover:bg-white/15 transition-all duration-300">
+                <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">✨</span>
+                </div>
+                <span className="text-gray-200 font-medium">Innovation Through Collaboration</span>
+              </div>
+              
+              <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-xl p-3 hover:bg-white/15 transition-all duration-300">
+                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">🚀</span>
+                </div>
+                <span className="text-gray-200 font-medium">Empowering Future Leaders</span>
+              </div>
+              
+              <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-xl p-3 hover:bg-white/15 transition-all duration-300">
+                <div className="w-8 h-8 bg-gradient-to-br from-pink-600 to-purple-500 rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">💡</span>
+                </div>
+                <span className="text-gray-200 font-medium">Transformative Experiences</span>
+              </div>
+            </div> */}
+            
+            {/* Background Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10 rounded-3xl blur-xl -z-10 transition-all duration-700"></div>
+          </div>
+          
+          {/* Additional Floating Elements */}
+          <div className="absolute top-8 -right-4 w-16 h-16 bg-gradient-to-br from-pink-400/20 to-purple-500/20 rounded-full blur-md animate-pulse"></div>
+          <div className="absolute bottom-8 -left-4 w-12 h-12 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-full blur-md animate-pulse delay-1000"></div>
+          
+          {/* Orbiting Elements */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 pointer-events-none">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-pink-400 rounded-full animate-spin origin-bottom" style={{animationDuration: '8s'}}></div>
+            <div className="absolute top-1/2 right-0 transform -translate-y-1/2 w-1 h-1 bg-purple-400 rounded-full animate-spin origin-left" style={{animationDuration: '6s'}}></div>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-pink-300 rounded-full animate-spin origin-top" style={{animationDuration: '10s'}}></div>
+            <div className="absolute top-1/2 left-0 transform -translate-y-1/2 w-2 h-2 bg-purple-300 rounded-full animate-spin origin-right" style={{animationDuration: '12s'}}></div>
+          </div>
+        </div>
+      </div>
 
       {/* Custom animation styles */}
       <style jsx>{`
@@ -61,6 +136,15 @@ const TeamSection = () => {
 
         .animate-float {
           animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
 
         /* Additional CSS to ensure watermark removal */

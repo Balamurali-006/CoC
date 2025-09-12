@@ -1,6 +1,7 @@
 import React from 'react';
 
 import saas_logo from '../assets/SaaS22.svg';
+import kactii from '../assets/kactii.jpg';
 
 const Sponsors = () => {
   // Your sponsors - currently featuring one amazing partner
@@ -12,7 +13,16 @@ const Sponsors = () => {
       tier: "Platinum",
       website: "https://www.saas22.com/",
       description: "Empowering innovation through cutting-edge SaaS solutions"
+    },
+    {
+      id: 2,
+      name: "Kactii",
+      logo: kactii,
+      tier: "Gold",
+      website: "https://app.kactii.com/",
+      description: "Customized GenAI agents for medium companies"
     }
+
   ];
 
   // Placeholder for future sponsors
@@ -203,18 +213,69 @@ const Sponsors = () => {
           </p>
         </div>
 
-        {/* Featured Sponsor Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-pink-400 mb-2">✨ Featured Partner ✨</h3>
-            <p className="text-gray-400">Our premier sponsor making this event extraordinary</p>
+        {/* Platinum Sponsors */}
+        {sponsors.filter(s => s.tier === 'Platinum').length > 0 && (
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-pink-400 mb-2">✨ Platinum Sponsor ✨</h3>
+              <p className="text-gray-400">Our premier sponsor making this event extraordinary</p>
+            </div>
+            
+            <div className="max-w-md mx-auto">
+              {sponsors.filter(s => s.tier === 'Platinum').map((sponsor, index) => (
+                <SponsorCard key={sponsor.id} sponsor={sponsor} index={index} />
+              ))}
+            </div>
           </div>
-          
-          {/* Single Large Featured Card */}
-          <div className="max-w-2xl mx-auto">
-            <SponsorCard sponsor={sponsors[0]} index={0} />
+        )}
+
+        {/* Gold Sponsors */}
+        {sponsors.filter(s => s.tier === 'Gold').length > 0 && (
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-yellow-400 mb-2">🥇 Gold Sponsor 🥇</h3>
+              <p className="text-gray-400">Supporting innovation and excellence</p>
+            </div>
+            
+            <div className="max-w-md mx-auto">
+              {sponsors.filter(s => s.tier === 'Gold').map((sponsor, index) => (
+                <SponsorCard key={sponsor.id} sponsor={sponsor} index={index} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* Silver/Other Sponsors */}
+        {sponsors.filter(s => s.tier !== 'Platinum' && s.tier !== 'Gold').length > 0 && (
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-gray-300 mb-2">💎 Supporting Partners 💎</h3>
+              <p className="text-gray-400">Valuable contributors to our success</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {sponsors.filter(s => s.tier !== 'Platinum' && s.tier !== 'Gold').map((sponsor, index) => (
+                <SponsorCard key={sponsor.id} sponsor={sponsor} index={index} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Coming Soon Section */}
+        {/* {futureSponsorSlots > 0 && (
+          <div>
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-gray-400 mb-2">🚀 Join Our Partners 🚀</h3>
+              <p className="text-gray-500">Become part of something amazing</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {Array.from({ length: futureSponsorSlots }, (_, index) => (
+                <ComingSoonCard key={`coming-soon-${index}`} index={index} />
+              ))}
+            </div>
+          </div>
+        )} */}
       </div>
     </section>
   );

@@ -169,8 +169,8 @@ const AIDay = ({ onNavigateBack }) => {
   name: "Raja CSP Raman", 
   role: "Speaker", 
   linkedin: "https://www.linkedin.com/in/raja-csp-raman/",
-  bio: "Co-Founder and CTO, Startup Advisor",
-  expertise: "Machine learning researcher and mentor focused on GenAI, open-source projects, and MLOps innovation.",
+  bio: "Founder and CEO of kactii, Startup Advisor, GenAI Mentor/Coach",
+  expertise: "Machine learning researcher and mentor focused on GenAI and MLOps innovation.",
   image: speak3
 }
 
