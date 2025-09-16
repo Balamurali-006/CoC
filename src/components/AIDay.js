@@ -306,7 +306,7 @@ const AIDay = ({ onNavigateBack }) => {
             >
               <span className="relative z-10 flex items-center gap-2 sm:gap-3">
                 <Zap size={isMobile ? 18 : 20} />
-                Register for AI Day
+                Register for free
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-500 to-purple-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl scale-110"></div>
             </a>
